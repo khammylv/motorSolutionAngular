@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: hidden; background-color: #f3f4f6;}
+.mat-color{
+    color: #6B7280
+
+}
+
+ul {
+    list-style-type: none;
+    margin: 0; /* Opcional: elimina el margen por defecto */
+    padding: 0; /* Opcional: elimina el padding por defecto */
+}

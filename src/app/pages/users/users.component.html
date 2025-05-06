@@ -1,0 +1,41 @@
+<div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+    <div class="rounded-t mb-0 px-4 py-3 border-0">
+        <div class="flex flex-wrap items-center">
+          <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+            <h3 class="font-semibold text-base text-blueGray-700">Tabla de usuarios</h3>
+          </div>
+          <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+            <button  (click)="registrarUsuario()" class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">Agregar</button>
+          </div>
+        </div>
+      </div>
+    <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+        <table *ngIf="users?.length" class="min-w-full leading-normal">
+            <thead>
+                <tr app-tbl-heads [items]="tblHeads"></tr>
+
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let user of users">
+                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm" app-tbl-body [name]="user.UserName"></td>
+                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm" app-tbl-body [name]="user.UserEmail"></td>
+                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm" app-tbl-body [name]="user.UserIdentification"></td>
+                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm" app-tbl-body [name]="user.UserRole"></td>
+                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <button class="text-gray-400 hover:text-gray-100 mr-2" (click)="openDialog('delete', user.UserId)">
+                            <p>visibility</p>
+                        </button>
+                        <button  class="text-gray-400 hover:text-gray-100  mx-2" (click)="openDialog('edit', user.UserId)">
+                            <i class="material-icons-outlined text-base">edit</i>
+                        </button>
+                        <a href="#" class="text-gray-400 hover:text-gray-100  ml-2">
+                            <i class="material-icons-round text-base">delete_outline</i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
