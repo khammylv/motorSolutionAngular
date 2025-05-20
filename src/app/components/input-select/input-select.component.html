@@ -1,0 +1,16 @@
+<div class="mx-auto max-w-lg">
+  <div class="py-2">
+    <span class="px-1 text-sm text-gray-600 font-semibold">{{ placeholder }}</span>
+
+    <select [value]="selectedValue" (change)="onSelectChange($event)"
+      class="text-md block px-3 py-2 rounded-lg w-full
+      bg-white border-2 border-gray-300 shadow-md
+      focus:bg-white focus:border-gray-600 focus:outline-none">
+      <option value="" disabled selected>Seleccione un {{ labelName }}</option>
+      <option *ngFor="let option of options" [value]="option.value">
+        {{ option.label }}
+      </option>
+    </select>
+  </div>
+</div>
+

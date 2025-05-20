@@ -42,7 +42,6 @@ export class InputTextComponent implements ControlValueAccessor{
   // ControlValueAccessor methods:
   writeValue(value: any): void {
     this.text = this.removeLettersPipe.transform(value, this.isNumber);
-   
   }
 
   registerOnChange(fn: any): void {

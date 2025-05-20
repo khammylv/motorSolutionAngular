@@ -11,9 +11,11 @@ export class RemoveLettersPipe implements PipeTransform {
     if (!value) {
       return '';
     }
+     if (typeof value !== 'string') {
+    return value; 
+  }
     
     if (shouldRemove) {
-      console.log("pipe => ", value)
       return value.replace(/\D/g, "");
     }
 

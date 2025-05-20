@@ -1,0 +1,22 @@
+<div class="h-screen bg-gradient-to-br from-blue-600 to-indigo-600 flex justify-center items-center w-full">
+    
+    <ng-container *ngIf="isLoading">
+        <form   [formGroup]="companyRegister" (ngSubmit)="submitForm()">
+            <div class="bg-white px-10 py-8 rounded-xl w-screen shadow-md max-w-sm">
+              <div class="space-y-4">
+                <h1 class="text-center text-2xl font-semibold text-gray-600">Register</h1>
+                <app-input-text formControlName="CompanyName" placeholder="Nombre *" (isNumber)="false"></app-input-text>
+                <app-input-text formControlName="Nit" placeholder="Nit *" (isNumber)="false"></app-input-text>
+                <app-input-text formControlName="CompanyAddress" placeholder="Dirección *" (isNumber)="false"></app-input-text>
+                <app-input-text formControlName="CompanyPhone" placeholder="Telefono *" (isNumber)="true"></app-input-text>
+               <app-input-email formControlName="CompanyEmail" placeholder="Email *"></app-input-email>
+               <app-input-text formControlName="LegalRepresentative" placeholder="Representante Legal *" (isNumber)="false"></app-input-text>
+                <app-input-password formControlName="CompanyPassword" placeholder="Password *"></app-input-password>
+               
+              </div>
+              <button class="mt-4 w-full bg-gradient-to-tr from-blue-600 to-indigo-600 text-indigo-100 py-2 rounded-md text-lg tracking-wide">Register</button>
+            </div>
+          </form>
+    </ng-container>
+   
+  </div>

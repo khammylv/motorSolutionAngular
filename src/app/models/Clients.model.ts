@@ -1,4 +1,4 @@
-export interface Clients{
+export interface Clients {
     ClientId: number;
     Name: string;
     Email: string;
@@ -6,4 +6,12 @@ export interface Clients{
     Identification: string;
     CompanyCode?: number;
     CompanyName?: string;
+}
+
+export interface ClientData{
+    PageIndex : number;
+    PageSize : number;
+    TotalCount: number;
+    TotalPages: number;
+    Data: Clients[];
 }

@@ -1,0 +1,74 @@
+<div class="flex">
+
+    <div class="md:col-span-1 h-48 shadow-xl ">
+        <div class="flex w-full h-full relative">
+            <img src="https://res.cloudinary.com/dboafhu31/image/upload/v1625318266/imagen_2021-07-03_091743_vtbkf8.png"
+                class="w-44 h-44 m-auto" alt="">
+
+        </div>
+    </div>
+    <div class="md:col-span-3 h-auto shadow-xl p-4 space-y-2 p-3  flex-1">
+        <div class="grid grid-cols-2 gap-4 w-full">
+            <!-- Columna de etiquetas -->
+            <ng-container [ngSwitch]="userType">
+                <ng-container *ngSwitchCase="'user'">
+                    <div class="space-y-2">
+                        <ng-container *ngFor="let item of userItems">
+                            <span
+                                class="text-sm font-bold uppercase bg-gray-50 border border-2 rounded px-4 py-2 block w-full">{{item.name}}:</span>
+                        </ng-container>
+                    </div>
+                    <div class="space-y-2">
+                        <ng-container *ngIf="user">
+                            <input class="px-4 py-2 border border-gray-300 rounded shadow-sm w-full bg-gray-100"
+                                type="text" [value]="user.UserName" readonly />
+                            <input class="px-4 py-2 border border-gray-300 rounded shadow-sm w-full bg-gray-100"
+                                type="text" [value]="user.UserEmail" readonly />
+                            <input class="px-4 py-2 border border-gray-300 rounded shadow-sm w-full bg-gray-100"
+                                type="text" [value]="user.UserIdentification" readonly />
+                            <input class="px-4 py-2 border border-gray-300 rounded shadow-sm w-full bg-gray-100"
+                                type="text" [value]="user.UserRole" readonly />
+                        </ng-container>
+
+                    </div>
+
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'company'">
+                    <div class="space-y-2">
+                        <ng-container *ngFor="let item of companyItems">
+                            <span
+                                class="text-sm font-bold uppercase bg-gray-50 border border-2 rounded px-4 py-2 block w-full">{{item.name}}:</span>
+                        </ng-container>
+                    </div>
+                     <div class="space-y-2">
+                        <ng-container *ngIf="company">
+                            <input class="px-4 py-2 border border-gray-300 rounded shadow-sm w-full bg-gray-100"
+                                type="text" [value]="company.CompanyName" readonly />
+                            <input class="px-4 py-2 border border-gray-300 rounded shadow-sm w-full bg-gray-100"
+                                type="text" [value]="company.Nit" readonly />
+                            <input class="px-4 py-2 border border-gray-300 rounded shadow-sm w-full bg-gray-100"
+                                type="text" [value]="company.CompanyAddress" readonly />
+                            <input class="px-4 py-2 border border-gray-300 rounded shadow-sm w-full bg-gray-100"
+                                type="text" [value]="company.CompanyPhone" readonly />
+                                 <input class="px-4 py-2 border border-gray-300 rounded shadow-sm w-full bg-gray-100"
+                                type="text" [value]="company.CompanyEmail" readonly />
+                            <input class="px-4 py-2 border border-gray-300 rounded shadow-sm w-full bg-gray-100"
+                                type="text" [value]="company.LegalRepresentative" readonly />
+                        </ng-container>
+
+                    </div>
+
+                </ng-container>
+
+            </ng-container>
+
+
+            <div>
+
+            </div>
+
+        </div>
+
+
+    </div>

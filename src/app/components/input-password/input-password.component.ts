@@ -22,6 +22,7 @@ export class InputPasswordComponent implements ControlValueAccessor{
 
   password!: string;
   showPassword: boolean = false;
+  isValid: boolean = true;
 
   private onChange = (value: any) => {};
   private onTouched = () => {};
@@ -29,14 +30,21 @@ export class InputPasswordComponent implements ControlValueAccessor{
   togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
   }
-
+ 
   onPasswordInput(event: any): void {
-    this.password = event.target.value;
-    //console.log(event.target.value);
-    this.onChange(event.target.value);
-    this.onTouched();
+    const input = event.target as HTMLInputElement;
+    this.password = input.value;
+    this.validatePassword();
+    if (this.isValid) {
+      this.onChange(this.password);
+      this.onTouched();
+    }
   }
-
+  validatePassword() {
+    const regex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+    this.isValid = regex.test(this.password)
+    //return regex.test(cadena);
+  }
   // ControlValueAccessor methods:
   writeValue(value: any): void {
     this.password = value || '';

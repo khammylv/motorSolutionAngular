@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ConfigurationService } from './services/configuration.service';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +10,5 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'MotorSolutionAngular';
+  constructor(){ }
 }

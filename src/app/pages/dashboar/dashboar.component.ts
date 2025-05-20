@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './dashboar.component.css'
 })
 export class DashboarComponent {
+constructor(){
 
+}
 }
 //bg-gray-100

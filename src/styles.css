@@ -1,14 +1,83 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
+:root{
+    __red_alert : #B91C1C;
+    __red_alert_bg: #FEE2E2;
+    __yellow_warning: #B45309;
+    __yellow_warning_bg: #FEF9C3;
+    __green_succes: #15803D;
+    __green_succes_bg:#DCFCE7;
+    __blue_info_bg: #DBEAFE;
+    __blue_info: #1D4ED8
+;
+}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: hidden; background-color: #f3f4f6;}
 .mat-color{
     color: #6B7280
 
 }
-
+.icon-error{
+    color: #B91C1C; 
+}
+.icon-warning{
+    color: #B45309;
+}
 ul {
     list-style-type: none;
-    margin: 0; /* Opcional: elimina el margen por defecto */
-    padding: 0; /* Opcional: elimina el padding por defecto */
+    margin: 0; 
+    padding: 0;
 }
+.mdc-snackbar--success {
+    --mdc-snackbar-container-color:  #DCFCE7;
+    --mdc-snackbar-supporting-text-color: #15803D; 
+}
+.mdc-snackbar--success .mdc-snackbar__label {
+    font-weight: bold !important; 
+}
+
+.mdc-snackbar--success .mdc-snackbar__action {
+    font-weight: bold !important; 
+    color: #15803D !important; 
+}
+
+.mdc-snackbar--error {
+  --mdc-snackbar-container-color: #FEE2E2;
+  --mdc-snackbar-supporting-text-color: #B91C1C;
+   
+}
+
+.mdc-snackbar--error .mdc-snackbar__label {
+  font-weight: bold !important;
+ }
+
+.mdc-snackbar--error .mdc-snackbar__action {
+  font-weight: bold;
+  color: #B91C1C !important;
+}
+
+.mdc-snackbar--warning {
+    --mdc-snackbar-container-color:#FEF9C3;
+    --mdc-snackbar-supporting-text-color: #B45309;
+}
+.mdc-snackbar--warning .mdc-snackbar__label {
+  font-weight: bold !important;
+ }
+
+.mdc-snackbar--warning .mdc-snackbar__action {
+  font-weight: bold;
+  color: #B45309 !important;
+}
+.mdc-snackbar--info {
+    --mdc-snackbar-container-color:#DBEAFE;
+    --mdc-snackbar-supporting-text-color: #1D4ED8;
+}
+.mdc-snackbar--info .mdc-snackbar__label {
+  font-weight: bold !important;
+ }
+
+.mdc-snackbar--info .mdc-snackbar__action {
+  font-weight: bold;
+  color: #1D4ED8 !important;
+}
+
