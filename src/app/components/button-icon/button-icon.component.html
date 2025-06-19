@@ -1,3 +1,7 @@
-<button class="cursor-pointer"  (click)="onClick()">
-    <mat-icon fontIcon= {{icon}}  [ngClass]="color"></mat-icon>
+<button class="cursor-pointer uppercase text-xs flex flex-row items-center justify-center font-semibold"  (click)="onClick()">
+   <div class="mr-2">
+     <mat-icon fontIcon= {{icon}}  [ngClass]="color"></mat-icon>
+   </div>
+   
+    <p [ngClass]="color">{{message}}</p>
 </button>

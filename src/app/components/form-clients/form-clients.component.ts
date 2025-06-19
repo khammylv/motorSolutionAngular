@@ -17,7 +17,6 @@ import { ClientsService } from '../../services/clients.service';
 import { ConfigurationService } from '../../services/configuration.service';
 import { SharedService } from '../../services/shared.service';
 import { LoadingService } from '../../services/loading.service';
-import { SnackbarService } from '../../services/snackbar.service';
 import { catchError, of, Subscription, tap } from 'rxjs';
 import { ERROR_CLASS, INFO_CLASS } from '../../utils/constanst';
 
@@ -42,7 +41,7 @@ export class FormClientsComponent implements OnInit {
   isLoading: boolean = false;
   clientId!: number;
   companyCode!: number;
-  clientsSubscription: Subscription | undefined;
+  clientsSubscription!: Subscription;
   constructor(
     @Inject('dialogData') public data: any,
     private dialogRef: MatDialogRef<any>,
@@ -51,7 +50,7 @@ export class FormClientsComponent implements OnInit {
     private configurationServices: ConfigurationService,
     private sharedServices: SharedService,
     private loadingService: LoadingService,
-    private snackbar: SnackbarService
+    
   ) {}
 
   actionInit: Record<string, (idV: number) => void> = {
@@ -123,7 +122,7 @@ export class FormClientsComponent implements OnInit {
   }
   submitForm() {
     if (this.actionForm.invalid) {
-      this.showSnackbar(
+      this.sharedServices.showSnackbar(
         'Agregue todos los campos del formulario',
         'Info',
         INFO_CLASS
@@ -135,7 +134,6 @@ export class FormClientsComponent implements OnInit {
   }
 
   addClient(client: Clients) {
-  
      this.clientsSubscription = this.clientServices.addClient(client).pipe(
             tap(() => {
              this.loadingService.hide();
@@ -144,7 +142,7 @@ export class FormClientsComponent implements OnInit {
           catchError((error) => {
             console.error(error);
             this.loadingService.hide();
-            this.showSnackbar("Error al agregar el usuario", "Error", ERROR_CLASS)
+            this.sharedServices.showSnackbar("Error al agregar el cliente", "Error", ERROR_CLASS)
             return of(null);
           })
       ).subscribe();
@@ -159,14 +157,12 @@ export class FormClientsComponent implements OnInit {
           catchError((error) => {
             console.error(error);
             this.loadingService.hide();
-            this.showSnackbar("Error al editar el usuario", "Error", ERROR_CLASS)
+            this.sharedServices.showSnackbar("Error al editar el cliente", "Error", ERROR_CLASS)
             return of(null);
           })
       ).subscribe();
   }
-  showSnackbar(mensaje: string, action: string, className: string) {
-    this.snackbar.show(mensaje, action, 3000, className);
-  }
+ 
   ngOnDestroy(): void {
     if (this.clientsSubscription) {
       this.clientsSubscription.unsubscribe();

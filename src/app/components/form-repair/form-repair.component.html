@@ -1,0 +1,110 @@
+<div class="max-w-2xl mx-auto">
+    <div class="rounded-t mb-0 px-4 py-3 border-0">
+        <div class="flex flex-wrap items-center">
+            <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                <h3 class="font-semibold text-base text-blueGray-700">Lista de detalles</h3>
+            </div>
+
+            <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+                <button (click)="addRepailsDetails()"
+                    class="cursor-pointer bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    type="button">
+                    Agregar detalle de reparación
+                </button>
+            </div>
+
+
+        </div>
+        <app-loading></app-loading>
+    </div>
+    <ng-container *ngIf="isLoading">
+        <form [formGroup]="actionForm" (ngSubmit)="submitForm()">
+            <div class="mb-4 w-full bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600">
+                <div class="flex justify-between items-center py-2 px-3 border-b dark:border-gray-600">
+                    <div class="flex flex-wrap items-center divide-gray-200 sm:divide-x dark:divide-gray-600">
+
+                        <div class="mb-2">
+                            <app-input-text formControlName="RepairServices" placeholder="Servicio *"
+                                [isNumber]="false"></app-input-text>
+
+                        </div>
+                        <div class="mb-2">
+                            <app-input-text formControlName="Price" placeholder="Precio *"
+                                [isNumber]="true"></app-input-text>
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="py-2 px-4 bg-white rounded-b-lg dark:bg-gray-800">
+                    <label for="editor" class="sr-only">Agregue la descripcion del servicio...</label>
+                    <textarea id="editor" rows="8" formControlName="RepairDescription"
+                        class="block px-0 w-full text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
+                        placeholder="Agregue la descripcion del servicio..." required></textarea>
+                </div>
+            </div>
+            <button type="submit"
+                class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+                Agregar detalle de reparación
+            </button>
+        </form>
+    </ng-container>
+    <div class="flex flex-col border rounded-lg overflow-hidden bg-white my-12 max-w-lg"
+        *ngFor="let repairDe of repairsDetails">
+        <div class="grid grid-cols-1">
+            <div class="flex flex-col">
+                <div class="flex flex-col w-full relative bottom-0">
+                    <div class="grid grid-cols-3 border-b divide-x text-gray-500  bg-gray-50 dark:bg-transparent py-3">
+                        <p class=" uppercase text-xs flex flex-row items-center justify-center font-semibold">
+                            Servicio: {{repairDe.RepairServices}}
+                        </p>
+                        <span class="uppercase text-xs flex flex-row items-center justify-center font-semibold">
+
+                            Price: {{repairDe.Price}}
+                        </span>
+
+
+                    </div>
+                </div>
+                <div class="flex flex-col space-y-4  p-6 text-gray-600">
+                    <div class="flex flex-row text-sm">
+                        <p class="flex items-center text-gray-500">
+                            {{repairDe.RepairDescription}}
+                        </p>
+                    </div>
+                </div>
+                <div class="flex flex-col w-full relative bottom-0">
+                    <div class="grid grid-cols-3 border-t divide-x text-gray-500  bg-gray-50 dark:bg-transparent py-3">
+                        <button (click)="editRepairDetails(repairDe.RepairDetailsId)"
+                            class=" cursor-pointer uppercase text-xs flex flex-row items-center justify-center font-semibold">
+                            <div class="mr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px"
+                                    fill="#64748b">
+                                    <path d="M0 0h24v24H0z" fill="none" />
+                                    <path
+                                        d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+                                </svg>
+                            </div>
+                            Editar
+                        </button>
+                        <button (click)="deleteRepairDetails(repairDe.RepairDetailsId)"
+                            class="cursor-pointer uppercase text-xs flex flex-row items-center justify-center font-semibold">
+                            <div class="mr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px"
+                                    fill="#64748b">
+                                    <path d="M0 0h24v24H0V0z" fill="none" />
+                                    <path
+                                        d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4z" />
+                                </svg>
+                            </div>
+                            Eliminar
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

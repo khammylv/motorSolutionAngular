@@ -1,0 +1,123 @@
+import { CommonModule } from '@angular/common';
+import { Component, Input, OnInit } from '@angular/core';
+import { PaginatorTableComponent } from '../paginator-table/paginator-table.component';
+import { InformationComponent } from '../information/information.component';
+import { ButtonIconComponent } from '../button-icon/button-icon.component';
+import { Billings } from '../../models/Billing.models';
+import { Pagination } from '../../models/Pagination.model';
+import { catchError, of, Subscription, tap } from 'rxjs';
+import { BillingService } from '../../services/billing.service';
+import { DialogService } from '../../services/dialog.service';
+import { BillingDetailsComponent } from '../billing-details/billing-details.component';
+
+@Component({
+  selector: 'app-billing-tab',
+  imports: [
+    CommonModule,
+    PaginatorTableComponent,
+    ButtonIconComponent,
+    InformationComponent,
+  ],
+  templateUrl: './billing-tab.component.html',
+  styleUrl: './billing-tab.component.css',
+})
+export class BillingTabComponent implements OnInit {
+  @Input() infoTab!: string;
+  @Input() idSearch!: number;
+  constructor(private billingServices: BillingService,private dialogService: DialogService,) {}
+  billings!: Array<Billings>;
+  billingSubscription!: Subscription;
+  pagination!: Pagination;
+
+  action: Record<
+    string,
+    (id: number, pageIndex: number, pageSize: number) => void
+  > = {
+    company: (id: number, pageIndex: number, pageSize: number) =>
+      this.getBillingsByCompany(id, pageIndex, pageSize),
+    client: (id: number, pageIndex: number, pageSize: number) =>
+      this.getBillingByClient(id, pageIndex, pageSize),
+  };
+  ngOnInit(): void {
+    this.pagination = {
+      pageIndex: 0,
+      pageSize: 5,
+      length: 0,
+    };
+     this.getAllBilling(
+      this.idSearch,
+      this.pagination.pageIndex,
+      this.pagination.pageSize
+    );
+  }
+  viewBilling(id: number) {
+      this.dialogService
+          .openDialog(BillingDetailsComponent, 'Factura', {
+            action: 'edit',
+            id: id,
+            
+          })
+          .afterClosed()
+          .subscribe((result) => {
+            if (result) {
+             
+              
+            }
+          });
+  }
+  getAllBilling(id: number, pageIndex: number, pageSize: number) {
+    this.action[this.infoTab]?.(id, pageIndex, pageSize);
+  }
+  getBillingByClient(id: number, pageIndex: number, pageSize: number) {
+    this.billingSubscription = this.billingServices
+      .getBillingByClient(id, pageIndex, pageSize)
+      .pipe(
+        tap((data) => {
+          this.billings = data.Data;
+          this.pagination = {
+            pageIndex: data.PageIndex,
+            pageSize: pageSize,
+            length: data.TotalCount,
+          };
+        }),
+        catchError((error: any) => {
+          console.error('Error al obtener usuario:', error);
+          return of(null);
+        })
+      )
+      .subscribe();
+  }
+  getBillingsByCompany(id: number, pageIndex: number, pageSize: number) {
+    this.billingSubscription = this.billingServices
+      .getAllBilling(id, pageIndex, pageSize)
+      .pipe(
+        tap((data) => {
+          this.billings = data.Data;
+
+          this.pagination = {
+            pageIndex: data.PageIndex,
+            pageSize: pageSize,
+            length: data.TotalCount,
+          };
+        }),
+        catchError((error: any) => {
+          console.error('Error al obtener vehiculos:', error);
+          return of(null);
+        })
+      )
+      .subscribe();
+  }
+  billingPagination(pagination: Pagination) {
+    this.pagination = pagination;
+    this.getAllBilling(
+      this.idSearch,
+      pagination.pageIndex,
+      pagination.pageSize
+    );
+  }
+  ngOnDestroy(): void {
+    if (this.billingSubscription) {
+      this.billingSubscription.unsubscribe();
+    }
+  }
+}

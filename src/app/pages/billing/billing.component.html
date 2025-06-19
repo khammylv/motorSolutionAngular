@@ -1,0 +1,43 @@
+<mat-tab-group>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">business</mat-icon>
+      Facturas de la empresa.
+    </ng-template>
+    <app-billing-tab infoTab="company" [idSearch]=companyId></app-billing-tab>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">account_circle</mat-icon>
+     Facturas por clientes
+    </ng-template>
+    <ng-container *ngIf="clients?.length">
+      <mat-accordion class="example-headers-align" multi>
+   
+        <mat-expansion-panel *ngFor="let client of clients">
+          <mat-expansion-panel-header>
+            <mat-panel-title>{{client.Name}}</mat-panel-title>
+            <mat-panel-description>
+              Lista de Facturas.
+              <mat-icon>request_quote</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          
+          <app-billing-tab infoTab="client" [idSearch]=client.ClientId></app-billing-tab>
+
+        </mat-expansion-panel>
+      </mat-accordion>
+       <app-paginator-table
+          *ngIf="pagination"
+          [pagination]="pagination"
+          (paginationEvent)="billingPagination($event)"
+        ></app-paginator-table>
+    </ng-container>
+    <ng-container *ngIf="!clients?.length">
+      <app-information message="No existen clientes para mostrar."></app-information>
+
+    </ng-container>
+  </mat-tab>
+
+</mat-tab-group>

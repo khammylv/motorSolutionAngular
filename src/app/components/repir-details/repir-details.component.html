@@ -1,0 +1,75 @@
+<div class="flex flex-col space-y-3">
+    <ng-container *ngIf="repair">
+        <div class="flex flex-col border rounded-lg overflow-hidden bg-white">
+            <div class="grid grid-cols-1 sm:grid-cols-4">
+                <div class="flex flex-col border-b sm:border-b-0 items-center p-8 sm:px-4 sm:h-full sm:justify-center">
+                    <p class="text-7xl font-bold  rounded-full" [ngClass]="repair.RepairStatus | statusClass">{{ repair.RepairStatus| firstLetterUppercase}}</p>
+                </div>
+                <div class="flex flex-col sm:border-l col-span-3">
+                    <div class="flex flex-col space-y-4  p-6 text-gray-600">
+
+                        <app-card-details icon="face" color="mat-color" [message]="repair.ClientName ?? ''"
+                            placeholder="Nombre:"></app-card-details>
+                        <app-card-details icon="calendar_month" color="mat-color" [message]="repair.EntryDate"
+                            placeholder="Fecha de entrada:"></app-card-details>
+
+                        <app-card-details icon="pending_actions" color="mat-color" [message]="repair.DepartureDate"
+                            placeholder="Fecha de salida:"></app-card-details>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+
+  <ng-container *ngIf="repairDetails">
+   <div class="flex flex-col border rounded-lg overflow-hidden bg-white  max-w-lg" *ngFor="let repairD of repairDetails">
+        <div class="grid grid-cols-1">
+
+            <div class="flex flex-col">
+                <div class="flex flex-col w-full relative bottom-0">
+                    <div class="grid grid-cols-3 border-b divide-x text-gray-500  bg-gray-50 dark:bg-transparent py-3">
+                        <p class=" uppercase text-xs flex flex-row items-center justify-center font-semibold">
+                           {{repairD.RepairServices}}
+                        </p>
+
+
+                    </div>
+                </div>
+                <div class="flex flex-col space-y-4  p-6 text-gray-600">
+                    <div class="flex flex-row text-sm">
+                        <p class="flex items-center text-gray-500">
+                           {{repairD.RepairDescription}}
+                        </p>
+                    </div>
+                </div>
+               
+                <div class="flex flex-col w-full relative bottom-0">
+                    <div class="grid grid-cols-3 border-t divide-x text-gray-500  bg-gray-50 dark:bg-transparent py-3">
+                        <p class=" uppercase text-xs flex flex-row items-center justify-center font-semibold">
+                            Price: $ {{repairD.Price}}
+                        </p>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+      <div>
+                    <div class="inline-block align-bottom mr-5">
+                        <span class="text-2xl leading-none align-baseline">$</span>
+                        <span class="font-bold text-5xl leading-none align-baseline">{{totalprice}}</span>
+                        <span class="text-2xl leading-none align-baseline">.00</span>
+                    </div>
+                    <div class="inline-block align-bottom">
+                        <button (click)="onCreateBilling()" class="cursor-pointer bg-yellow-300 opacity-75 hover:opacity-100 text-yellow-900 hover:text-gray-900 rounded-full px-10 py-2 font-semibold"><i class="mdi mdi-cart -ml-2 mr-2"></i> Generar Factura</button>
+                    </div>
+                </div>
+  </ng-container>
+
+
+   
+
+</div>

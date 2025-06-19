@@ -17,11 +17,22 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: h
     color: #6B7280
 
 }
+.example-tab-icon {
+  margin-right: 8px;
+  color: #6B7280
+}
+
 .icon-error{
     color: #B91C1C; 
 }
+.icon-color{
+    color:  #06b6d4; 
+}
 .icon-warning{
     color: #B45309;
+}
+.icon-done{
+    color: #15803D;
 }
 ul {
     list-style-type: none;
@@ -81,3 +92,15 @@ ul {
   color: #1D4ED8 !important;
 }
 
+.example-action-buttons {
+  padding-bottom: 20px;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.example-headers-align .mat-mdc-form-field + .mat-mdc-form-field {
+  margin-left: 8px;
+}

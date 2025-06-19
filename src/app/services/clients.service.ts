@@ -22,7 +22,9 @@ export class ClientsService {
   getClients(id: number): Observable<Clients> {
     return this.http.get<Clients>(`${this.baseurl}/${id}`);
   }
-
+   getClientById(id: number): Observable<Clients> {
+    return this.http.get<Clients>(`${this.baseurl}/${id}`);
+  }
   addClient(client: Clients): Observable<any> {
     return this.http.post<any>(`${this.baseurl}`, client);
   }

@@ -1,0 +1,42 @@
+<mat-tab-group>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">business</mat-icon>
+            Reparaciones de la empresa.
+        </ng-template>
+        <app-repairs-tab infoTab="company" [idSearch]=companyId></app-repairs-tab>
+    </mat-tab>
+  
+    <mat-tab>
+         <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">time_to_leave</mat-icon>
+            Reparaciones por vehiculo.
+        </ng-template>
+         <ng-container *ngIf="vehicles?.length">
+      <mat-accordion class="example-headers-align" multi>
+   
+        <mat-expansion-panel *ngFor="let vehicle of vehicles">
+          <mat-expansion-panel-header>
+            <mat-panel-title>{{vehicle.ClientName}}</mat-panel-title>
+            <mat-panel-description>
+              {{vehicle.Model}}
+              <mat-icon>handyman</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          
+          <app-repairs-tab infoTab="vehicle" [idSearch]=vehicle.VehicleId [idClient]="vehicle.ClientId"></app-repairs-tab>
+
+        </mat-expansion-panel>
+      </mat-accordion>
+       <app-paginator-table
+          *ngIf="pagination"
+          [pagination]="pagination"
+          (paginationEvent)="repairsPagination($event)"
+        ></app-paginator-table>
+    </ng-container>
+    <ng-container *ngIf="!vehicles?.length">
+      <app-information message="No existen vehiculos para mostrar."></app-information>
+
+    </ng-container>
+    </mat-tab>
+</mat-tab-group>

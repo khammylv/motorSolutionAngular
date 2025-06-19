@@ -21,7 +21,6 @@ import { InputSelectComponent } from '../input-select/input-select.component';
 import { SharedService } from '../../services/shared.service';
 import { LoadingComponent } from '../loading/loading.component';
 import { LoadingService } from '../../services/loading.service';
-import { SnackbarService } from '../../services/snackbar.service';
 import { ERROR_CLASS, INFO_CLASS } from '../../utils/constanst';
 
 @Component({
@@ -58,7 +57,7 @@ export class FormUserComponent implements OnInit{
     private configurationServices: ConfigurationService,
     private sharedServices: SharedService,
     private loadingService: LoadingService,
-    private snackbar: SnackbarService
+   
   ) {}
 
   actionInit: Record<string, (idV: number) => void> = {
@@ -142,7 +141,7 @@ export class FormUserComponent implements OnInit{
   }
   submitForm() {
     if (this.actionForm.invalid) {
-      this.showSnackbar("Agregue todos los campos del formulario", "Info", INFO_CLASS)
+      this.sharedServices.showSnackbar("Agregue todos los campos del formulario", "Info", INFO_CLASS)
       return;
     }
     this.loadingService.show();
@@ -159,7 +158,7 @@ export class FormUserComponent implements OnInit{
         catchError((error) => {
           console.error(error);
           this.loadingService.hide();
-          this.showSnackbar("Error al agregar el usuario", "Error", ERROR_CLASS)
+          this.sharedServices.showSnackbar("Error al agregar el usuario", "Error", ERROR_CLASS)
           return of(null);
         })
     ).subscribe();
@@ -174,16 +173,14 @@ export class FormUserComponent implements OnInit{
         catchError((error) => {
           console.error(error);
           this.loadingService.hide();
-          this.showSnackbar("Error al editar el usuario", "Error", ERROR_CLASS)
+          this.sharedServices.showSnackbar("Error al editar el usuario", "Error", ERROR_CLASS)
           return of(null);
         })
     ).subscribe();
     
     
   }
-  showSnackbar(mensaje: string, action: string, className: string) {
-    this.snackbar.show(mensaje, action, 3000, className);
-  }
+ 
     ngOnDestroy(): void {
     if (this.userSubscription) {
       this.userSubscription.unsubscribe();

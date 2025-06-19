@@ -14,7 +14,8 @@ export class ConfigurationService {
   private _userId = 0;
   private _companyId = 0;
   private _userRole = '';
-   private _roles: Roles = {};
+  private _roles: Roles = {};
+  private _status: Roles = {};
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
   private setLoginInfo({ isAdmin, isEmpresa, userId, companyId, userRole }: { isAdmin: boolean, isEmpresa: boolean, userId: number, companyId: number, userRole : string}) {
     this._isAdmin = isAdmin;
@@ -30,7 +31,9 @@ export class ConfigurationService {
   setRoles(roles: Roles){
    this._roles = roles
   }
-
+  setStatus(status: Roles){
+   this._status = status
+  }
    loadFromStorage() {
     if (isPlatformBrowser(this.platformId)) {
       const data = localStorage.getItem('authData');
@@ -99,6 +102,9 @@ getCompanyToken(): CompanyTokenPayload | null {
   
   get Roles(): Roles {
     return this._roles;
+  }
+   get Status(): Roles {
+    return this._status;
   }
 
   get isAdmin(): boolean {

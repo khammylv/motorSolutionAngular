@@ -11,6 +11,8 @@ import { LoginCompanyComponent } from './pages/login-company/login-company.compo
 import { LoginUserComponent } from './pages/login-user/login-user.component';
 import { CompanyComponent } from './pages/company/company.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { BillingComponent } from './pages/billing/billing.component';
+import { RepairsComponent } from './pages/repairs/repairs.component';
 
 export const routes: Routes = [
     {path : 'login', component: LoginComponent,
@@ -27,6 +29,8 @@ export const routes: Routes = [
             { path: 'vehicles', component: VehicleComponent },
             { path: 'home', component: DashboarComponent },
             { path: 'profile', component: ProfileComponent },
+            { path: 'repair', component: RepairsComponent },
+            { path: 'billing', component: BillingComponent },
             { path: '', redirectTo: 'home', pathMatch: 'full' }, // Ruta por defecto
           ]
 

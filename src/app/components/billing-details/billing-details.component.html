@@ -1,0 +1,60 @@
+<ng-container *ngIf="billing">
+<header>
+ <h1 class="text-center text-gray-700 text-xl font-bold">{{billing.CompanyName}}</h1>
+  <p>{{billing.CompanyAddress}} | Tel: {{billing.CompanyPhone}} | Email: {{billing.CompanyEmail}}</p>
+</header>
+
+<section class="info-cliente">
+  <div>
+    <strong>Cliente:</strong><br />
+    {{billing.ClientName}}<br />
+    
+  </div>
+  <div>
+    <strong>Factura Nº:</strong> {{billing.BillingId}}<br />
+    <strong>Fecha:</strong> {{billing.BillingDate}}
+  </div>
+</section>
+
+<section class="detalle-factura">
+  <h2 class=" text-gray-700 font-semibold">Detalle de servicios</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Servicio</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngIf="repairDetails">
+               <tr *ngFor="let repairD of repairDetails">
+        <td>{{repairD.RepairServices}}</td>
+        <td>{{repairD.RepairDescription}}</td>
+        <td>${{repairD.Price}}.00</td>
+       
+      </tr>
+      <ng-container *ngIf="repairDetails.length == 0">
+         <tr >
+        No existen detalles de reparaciones
+       
+       
+      </tr>
+      </ng-container>
+        </ng-container>
+      
+      
+    </tbody>
+  </table>
+
+  <div class="total">
+    <strong>Total: $ {{billing.Amount}}.00</strong>
+  </div>
+</section>
+
+<footer>
+  <p>Gracias por confiar en nosotros. ¡Buen viaje!</p>
+</footer>
+</ng-container>
+

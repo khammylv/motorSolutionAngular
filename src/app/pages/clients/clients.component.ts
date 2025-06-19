@@ -13,8 +13,13 @@ import { PaginatorTableComponent } from '../../components/paginator-table/pagina
 import { ButtonIconComponent } from '../../components/button-icon/button-icon.component';
 import { FormClientsComponent } from '../../components/form-clients/form-clients.component';
 import { DialogService } from '../../services/dialog.service';
-import { SnackbarService } from '../../services/snackbar.service';
 import { DeleteConfirmComponent } from '../../components/delete-confirm/delete-confirm.component';
+import { InformationComponent } from '../../components/information/information.component';
+import { SharedService } from '../../services/shared.service';
+import { RefreshService } from '../../services/refresh.service';
+import { MatIconModule } from '@angular/material/icon';
+import { FirstLetterUppercasePipe } from '../../pipes/first-letter-uppercase.pipe';
+import { CardDetailsComponent } from '../../components/card-details/card-details.component';
 
 @Component({
   selector: 'app-clients',
@@ -24,6 +29,10 @@ import { DeleteConfirmComponent } from '../../components/delete-confirm/delete-c
     TblBodyComponent,
     PaginatorTableComponent,
     ButtonIconComponent,
+    InformationComponent,
+    MatIconModule,
+    FirstLetterUppercasePipe,
+    CardDetailsComponent
   ],
   templateUrl: './clients.component.html',
   styleUrl: './clients.component.css',
@@ -32,12 +41,13 @@ export class ClientsComponent implements OnInit {
   constructor(
     private dialogService: DialogService,
     private clientServices: ClientsService,
-    private snackbar: SnackbarService,
-    private configurationServices: ConfigurationService
+    private sharedServices: SharedService,
+    private configurationServices: ConfigurationService,
+    private refreshServices: RefreshService
   ) {}
   tblHeads: TblItem[] = TBL_CLIENT;
-  clients: Array<Clients> | undefined;
-  clientsSubscription: Subscription | undefined;
+  clients!: Array<Clients>;
+  clientsSubscription!: Subscription;
   pagination!: Pagination;
 
   ngOnInit(): void {
@@ -46,11 +56,13 @@ export class ClientsComponent implements OnInit {
       pageSize: 5,
       length: 0,
     };
-    this.getAllClient(
-      this.configurationServices.companyId,
-      this.pagination.pageIndex,
-      this.pagination.pageSize
-    );
+    this.clientsSubscription = this.refreshServices.refresh$.subscribe(() => {
+      this.getAllClient(
+        this.configurationServices.companyId,
+        this.pagination.pageIndex,
+        this.pagination.pageSize
+      );
+    });
   }
 
   getAllClient(id: number, pageIndex: number, pageSize: number) {
@@ -88,7 +100,7 @@ export class ClientsComponent implements OnInit {
       .afterClosed()
       .subscribe((result) => {
         if (result) {
-          this.showSnackbar(
+          this.sharedServices.showSnackbar(
             'Cliente Agregado Exitosamente',
             'Success',
             SUCCES_CLASS
@@ -98,6 +110,7 @@ export class ClientsComponent implements OnInit {
             this.pagination.pageIndex,
             this.pagination.pageSize
           );
+          this.refreshServices.triggerRefresh(); 
         }
       });
   }
@@ -110,7 +123,7 @@ export class ClientsComponent implements OnInit {
       .afterClosed()
       .subscribe((result) => {
         if (result) {
-          this.showSnackbar(
+          this.sharedServices.showSnackbar(
             'Cliente Editado Exitosamente',
             'Success',
             SUCCES_CLASS
@@ -120,29 +133,30 @@ export class ClientsComponent implements OnInit {
             this.pagination.pageIndex,
             this.pagination.pageSize
           );
+          this.refreshServices.triggerRefresh(); 
         }
       });
   }
   eliminarCliente(id: number) {
     this.dialogService
-          .openDialog(DeleteConfirmComponent, 'Eliminar cliente', {
-            action: 'delete',
-            mensaje: '¿Estas seguro que deseas eliminar a este cliente?',
-          })
-          .afterClosed()
-          .subscribe((result) => {
-            if (result) {
-              console.log(result);
-              this.onDeleteClient(id);
-            }
-          });
+      .openDialog(DeleteConfirmComponent, 'Eliminar cliente', {
+        action: 'delete',
+        mensaje: '¿Estas seguro que deseas eliminar a este cliente?',
+      })
+      .afterClosed()
+      .subscribe((result) => {
+        if (result) {
+          console.log(result);
+          this.onDeleteClient(id);
+        }
+      });
   }
   onDeleteClient(id: number) {
     this.clientsSubscription = this.clientServices
       .deleteClient(id)
       .pipe(
         tap(() => {
-          this.showSnackbar(
+          this.sharedServices.showSnackbar(
             `Cliente con ID ${id} eliminado`,
             'succes',
             SUCCES_CLASS
@@ -152,18 +166,21 @@ export class ClientsComponent implements OnInit {
             this.pagination.pageIndex,
             this.pagination.pageSize
           );
+          this.refreshServices.triggerRefresh(); 
         }),
         catchError((error: any) => {
-          this.showSnackbar(`Error al eliminar cliente`, 'error', ERROR_CLASS);
+          this.sharedServices.showSnackbar(
+            `Error al eliminar cliente`,
+            'error',
+            ERROR_CLASS
+          );
           console.error('Error al eliminar cliente:', error);
           return of(null);
         })
       )
       .subscribe();
   }
-  showSnackbar(mensaje: string, action: string, className: string) {
-    this.snackbar.show(mensaje, action, 3000, className);
-  }
+
   ngOnDestroy(): void {
     if (this.clientsSubscription) {
       this.clientsSubscription.unsubscribe();

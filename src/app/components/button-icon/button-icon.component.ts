@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 export class ButtonIconComponent {
   @Input() icon!: string;
   @Input() color!: string;
+  @Input() message!: string;
   @Output() clicked = new EventEmitter<void>();
   onClick() {
     this.clicked.emit();

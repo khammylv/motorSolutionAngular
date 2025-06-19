@@ -1,1 +1,43 @@
-<p>vehicle works!</p>
+<mat-tab-group>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">business</mat-icon>
+      Vehiculos de la empresa.
+    </ng-template>
+    <app-vehicles-tab infoTab="company" [idSearch]=companyId></app-vehicles-tab>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">account_circle</mat-icon>
+     Vehiculos por clientes
+    </ng-template>
+    <ng-container *ngIf="clients?.length">
+      <mat-accordion class="example-headers-align" multi>
+   
+        <mat-expansion-panel *ngFor="let client of clients">
+          <mat-expansion-panel-header>
+            <mat-panel-title>{{client.Name}}</mat-panel-title>
+            <mat-panel-description>
+              Lista de Vehiculos.
+              <mat-icon>directions_car</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          
+          <app-vehicles-tab infoTab="client" [idSearch]=client.ClientId></app-vehicles-tab>
+
+        </mat-expansion-panel>
+      </mat-accordion>
+       <app-paginator-table
+          *ngIf="pagination"
+          [pagination]="pagination"
+          (paginationEvent)="vehiclePagination($event)"
+        ></app-paginator-table>
+    </ng-container>
+    <ng-container *ngIf="!clients?.length">
+      <app-information message="No existen clientes para mostrar."></app-information>
+
+    </ng-container>
+  </mat-tab>
+
+</mat-tab-group>
