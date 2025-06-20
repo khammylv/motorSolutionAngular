@@ -7,21 +7,21 @@ import {
   RepairsDetails,
   RepairsDTO,
   RepairStatus,
-  Status,
-  statusModel,
+  Status
 } from '../models/repair.model';
 import { Roles } from '../models/User.model';
 import { EmailSend } from '../models/Email.model';
-
+import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root',
 })
 export class RepairsService {
   constructor(private http: HttpClient) {}
-  private baseurl = '/api/repair';
-  private baseurlDetails = '/api/repair-details';
-  private baseurlDetail = '/api/repair-detail';
-  private emailUrl = '/api/repair-email';
+  private baseurl = `${environment.apiUrl}/repair`;
+  private baseurlDetails = `${environment.apiUrl}/repair-details`;
+  private baseurlDetail = `${environment.apiUrl}/repair-detail`;
+  private emailUrl = `${environment.apiUrl}/repair-email`;
+  
   getAllRepair(
     id: number,
     pageIndex: number,

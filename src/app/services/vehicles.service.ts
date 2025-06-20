@@ -2,13 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Vehicle, vehicleData } from '../models/vehicle.model';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class VehiclesService {
   constructor(private http: HttpClient) {}
-  private baseurl = '/api/vehicle';
+  
+  private baseurl = `${environment.apiUrl}/vehicle`;
 
 
   getAllVehicle(

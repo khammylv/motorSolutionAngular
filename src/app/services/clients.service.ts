@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ClientData, Clients } from '../models/clients.model';
-
+import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root',
 })
 export class ClientsService {
   constructor(private http: HttpClient) {}
-  baseurl = '/api/client';
+  
+  private baseurl = `${environment.apiUrl}/client`
 
   getAllClients(
     id: number,

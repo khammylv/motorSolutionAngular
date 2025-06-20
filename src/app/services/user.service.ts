@@ -2,14 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {  Roles, User, UserData, UserLogin } from '../models/User.model';
 import { Observable, tap } from 'rxjs';
+import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
   constructor(private http: HttpClient) { }
-  baseurl = '/api/user';
-  loginUrl= '/api/login';
+  private baseurl = `${environment.apiUrl}/user`;
+   private loginUrl = `${environment.apiUrl}/login`;
+
  getAllUser(id:number, pageIndex: number, pageSize: number):Observable< UserData>{
   return this.http.get<UserData>(`${this.baseurl}/company/${id}?pageIndex=${pageIndex}&pageSize=${pageSize}`)
  }

@@ -2,13 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Company, CompanyLogin, Sumary } from '../models/Company.model';
 import { Observable, tap } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CompanyService {
-   private baseurl = '/api/company';
-   loginUrl= '/api/login';
+  
+   private baseurl = `${environment.apiUrl}/company`;
+   private loginUrl=  `${environment.apiUrl}/login`;
+ 
   constructor(private http: HttpClient) { }
 
   getCompany(id: number):Observable< Company>{
