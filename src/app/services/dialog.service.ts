@@ -22,9 +22,10 @@ export class DialogService {
       },
     });
   }*/
-    openDialog(component: any, title: string, data: any = {}) {
+    openDialog(component: any, title: string, data: any = {},width: string = '30vw') {
       const dialogRef = this.dialog.open(DynamicDialogComponent, {
-        width: '500px',
+         width: width,
+         maxWidth: 'none',
         data: {
           title,
           component,

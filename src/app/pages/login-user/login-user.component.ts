@@ -38,7 +38,7 @@ submitForm() {
   this.userServices.userLogin(this.loginForm.value).pipe(
     tap(() => {
       const isAdmin = this.configurationServices.redirectionUser();
-      this.router.navigate([isAdmin ? '/admin' : '/empleado']);
+      this.router.navigate([isAdmin ? '/admin' : '/user']);
     }),
     catchError(error => {
     

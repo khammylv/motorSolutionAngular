@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, ReactiveFormsModule,InputPasswordComponent, InputEmailComponent,InputTextComponent],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -23,31 +23,15 @@ export class HomeComponent {
   
     
 
-    this.companyCode = this.sharedServices.generateId();
-    if(this.companyCode){
-      this.buildForm();
-      this.isLoading = true;
-    }
 
    
   }
-  buildForm(): void {
-    this.companyRegister = this.formBuilder.group({
-      CompanyCode: new FormControl(this.companyCode || '', Validators.required),
-      CompanyName: new FormControl('', Validators.required),
-      Nit: new FormControl('', Validators.required),
-      CompanyAddress: new FormControl('', Validators.required),
-      CompanyPhone: new FormControl('', Validators.required),
-      CompanyEmail: new FormControl('', Validators.required),
-      LegalRepresentative: new FormControl('', Validators.required),
-      CompanyPassword: new FormControl('', Validators.required)
-    });
-  }
-  submitForm() {
-    if (this.companyRegister.invalid) {
+
+  registerCompany() {
+    /*if (this.companyRegister.invalid) {
       return; // No enviar si hay errores
-    }
-    console.log(this.companyRegister.value)
-    this.router.navigate(["/company"]);
+    }*/
+   
+    this.router.navigate(["/register/company"]);
   }
 }

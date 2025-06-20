@@ -39,6 +39,7 @@ export class ProfileComponent implements OnInit {
     this.userId = this.configurationService.userId;
     this.actionInit[this.userType]?.();
    
+   
   }
   getUser() {
     if(this.userId){

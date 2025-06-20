@@ -1,60 +1,21 @@
-<ng-container *ngIf="billing">
-<header>
- <h1 class="text-center text-gray-700 text-xl font-bold">{{billing.CompanyName}}</h1>
-  <p>{{billing.CompanyAddress}} | Tel: {{billing.CompanyPhone}} | Email: {{billing.CompanyEmail}}</p>
-</header>
-
-<section class="info-cliente">
-  <div>
-    <strong>Cliente:</strong><br />
-    {{billing.ClientName}}<br />
-    
+<section >
+  <app-loading></app-loading>
+  <div class="border-2 flex items-center p-2 rounded justify-between space-x-2 mb-3">
+    <div class="space-x-2 truncate">
+      <svg xmlns="http://www.w3.org/2000/svg" class="fill-current inline text-gray-500" width="24" height="24"
+        viewBox="0 0 24 24">
+        <path
+          d="M17 5v12c0 2.757-2.243 5-5 5s-5-2.243-5-5v-12c0-1.654 1.346-3 3-3s3 1.346 3 3v9c0 .551-.449 1-1 1s-1-.449-1-1v-8h-2v8c0 1.657 1.343 3 3 3s3-1.343 3-3v-9c0-2.761-2.239-5-5-5s-5 2.239-5 5v12c0 3.866 3.134 7 7 7s7-3.134 7-7v-12h-2z" />
+      </svg>
+      <span>
+        factura.pdf
+      </span>
+    </div>
+    <button (click)="verFactura()"  class="text-purple-700 hover:underline">
+      Download
+    </button>
   </div>
-  <div>
-    <strong>Factura Nº:</strong> {{billing.BillingId}}<br />
-    <strong>Fecha:</strong> {{billing.BillingDate}}
-  </div>
-</section>
-
-<section class="detalle-factura">
-  <h2 class=" text-gray-700 font-semibold">Detalle de servicios</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Servicio</th>
-        <th>Descripción</th>
-        <th>Precio</th>
-        
-      </tr>
-    </thead>
-    <tbody>
-        <ng-container *ngIf="repairDetails">
-               <tr *ngFor="let repairD of repairDetails">
-        <td>{{repairD.RepairServices}}</td>
-        <td>{{repairD.RepairDescription}}</td>
-        <td>${{repairD.Price}}.00</td>
-       
-      </tr>
-      <ng-container *ngIf="repairDetails.length == 0">
-         <tr >
-        No existen detalles de reparaciones
-       
-       
-      </tr>
-      </ng-container>
-        </ng-container>
-      
-      
-    </tbody>
-  </table>
-
-  <div class="total">
-    <strong>Total: $ {{billing.Amount}}.00</strong>
-  </div>
-</section>
-
-<footer>
-  <p>Gracias por confiar en nosotros. ¡Buen viaje!</p>
-</footer>
-</ng-container>
+   <iframe style="display: block; border: none;"
+ *ngIf="pdfUrl" [src]="pdfUrl" width="100%" height="600px"></iframe>
+ </section>
 

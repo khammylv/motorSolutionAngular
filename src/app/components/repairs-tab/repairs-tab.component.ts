@@ -5,7 +5,7 @@ import { Repairs, RepairsDTO, RepairStatus } from '../../models/repair.model';
 import { catchError, of, Subscription, tap } from 'rxjs';
 import { Pagination } from '../../models/Pagination.model';
 import { RepairsService } from '../../services/repairs.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { TblHeadsComponent } from '../tbl-heads/tbl-heads.component';
 import { TblBodyComponent } from '../tbl-body/tbl-body.component';
 import { PaginatorTableComponent } from '../paginator-table/paginator-table.component';
@@ -21,6 +21,9 @@ import { ConfigurationService } from '../../services/configuration.service';
 import { RefreshService } from '../../services/refresh.service';
 import { DeleteConfirmComponent } from '../delete-confirm/delete-confirm.component';
 import { FormEmailComponent } from '../form-email/form-email.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-repairs-tab',
@@ -32,6 +35,10 @@ import { FormEmailComponent } from '../form-email/form-email.component';
     ButtonIconComponent,
     InformationComponent,
     StatusClassPipe,
+    MatMenuModule,
+    MatButtonModule,
+    MatIconModule
+   
   ],
   templateUrl: './repairs-tab.component.html',
   styleUrl: './repairs-tab.component.css',
@@ -45,6 +52,7 @@ export class RepairsTabComponent implements OnInit {
     private dialogService: DialogService,
     private sharedServices: SharedService,
     private configurationServices: ConfigurationService,
+   
     private refreshServices: RefreshService
   ) {}
   tblHeads: TblItem[] = TBL_REPAIRS;
@@ -53,6 +61,7 @@ export class RepairsTabComponent implements OnInit {
   repairsSubscription!: Subscription;
   pagination!: Pagination;
   isVehicleMode: boolean = false;
+  selectedRepair: any = null;
   action: Record<
     string,
     (id: number, pageIndex: number, pageSize: number) => void
@@ -83,6 +92,10 @@ export class RepairsTabComponent implements OnInit {
       );
     });
   }
+ formatDate(dateString: string | null | undefined): string {
+ return  this.sharedServices.formatDate(dateString);
+}
+
   getAllRepairs(id: number, pageIndex: number, pageSize: number) {
     this.action[this.infoTab]?.(id, pageIndex, pageSize);
   }
@@ -112,7 +125,7 @@ export class RepairsTabComponent implements OnInit {
       .pipe(
         tap((data) => {
           this.repairs = data.Data;
-          console.log(data);
+          
           this.pagination = {
             pageIndex: data.PageIndex,
             pageSize: pageSize,

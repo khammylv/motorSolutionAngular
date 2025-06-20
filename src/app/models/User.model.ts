@@ -29,6 +29,7 @@ export interface UserTokenPayload {
   exp: number;
   iss: string;
   aud: string;
+  isEmpresa: string;
 }
 
 export interface Roles {

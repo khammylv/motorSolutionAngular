@@ -7,6 +7,8 @@ export interface Company{
     CompanyEmail: string;
     LegalRepresentative: string;
     CompanyPassword?: string;
+    PasswordEmail?: string;
+    Status?: string;
 }
 export interface CompanyTokenPayload {
   id: string;
@@ -14,4 +16,9 @@ export interface CompanyTokenPayload {
   exp: number;
   iss: string;
   aud: string;
+}
+
+export interface CompanyLogin{
+   CompanyEmail: string; 
+   CompanyPassword: string;
 }

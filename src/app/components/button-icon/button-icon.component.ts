@@ -12,6 +12,7 @@ export class ButtonIconComponent {
   @Input() icon!: string;
   @Input() color!: string;
   @Input() message!: string;
+  @Input() isMenu = 'button';
   @Output() clicked = new EventEmitter<void>();
   onClick() {
     this.clicked.emit();

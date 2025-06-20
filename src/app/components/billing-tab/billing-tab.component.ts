@@ -9,6 +9,9 @@ import { catchError, of, Subscription, tap } from 'rxjs';
 import { BillingService } from '../../services/billing.service';
 import { DialogService } from '../../services/dialog.service';
 import { BillingDetailsComponent } from '../billing-details/billing-details.component';
+import { DomSanitizer } from '@angular/platform-browser';
+import { LoadingComponent } from '../loading/loading.component';
+import { LoadingService } from '../../services/loading.service';
 
 @Component({
   selector: 'app-billing-tab',
@@ -17,6 +20,7 @@ import { BillingDetailsComponent } from '../billing-details/billing-details.comp
     PaginatorTableComponent,
     ButtonIconComponent,
     InformationComponent,
+    LoadingComponent
   ],
   templateUrl: './billing-tab.component.html',
   styleUrl: './billing-tab.component.css',
@@ -24,10 +28,11 @@ import { BillingDetailsComponent } from '../billing-details/billing-details.comp
 export class BillingTabComponent implements OnInit {
   @Input() infoTab!: string;
   @Input() idSearch!: number;
-  constructor(private billingServices: BillingService,private dialogService: DialogService,) {}
+  constructor(private billingServices: BillingService,private dialogService: DialogService,private sanitizer: DomSanitizer,private loadingService: LoadingService,) {}
   billings!: Array<Billings>;
   billingSubscription!: Subscription;
   pagination!: Pagination;
+  pdfUrl?: string;
 
   action: Record<
     string,
@@ -51,12 +56,19 @@ export class BillingTabComponent implements OnInit {
     );
   }
   viewBilling(id: number) {
+  /*  this.loadingService.show();
+   this.billingSubscription = this.billingServices.getFacturaPdf(id).subscribe(blob => {
+    this.loadingService.hide();
+    this.pdfUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+      URL.createObjectURL(blob)
+    ) as string;
+  });*/
       this.dialogService
           .openDialog(BillingDetailsComponent, 'Factura', {
             action: 'edit',
             id: id,
             
-          })
+          },'70vw')
           .afterClosed()
           .subscribe((result) => {
             if (result) {

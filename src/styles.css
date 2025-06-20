@@ -104,3 +104,9 @@ ul {
 .example-headers-align .mat-mdc-form-field + .mat-mdc-form-field {
   margin-left: 8px;
 }
+.custom-dialog-full-width .mat-dialog-container {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  height: 100vh !important;
+  padding: 0 !important;
+}

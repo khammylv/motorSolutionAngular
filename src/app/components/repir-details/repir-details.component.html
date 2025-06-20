@@ -1,4 +1,4 @@
-<div class="flex flex-col space-y-3">
+<div class="flex flex-col space-y-3 ">
     <ng-container *ngIf="repair">
         <div class="flex flex-col border rounded-lg overflow-hidden bg-white">
             <div class="grid grid-cols-1 sm:grid-cols-4">
@@ -10,10 +10,10 @@
 
                         <app-card-details icon="face" color="mat-color" [message]="repair.ClientName ?? ''"
                             placeholder="Nombre:"></app-card-details>
-                        <app-card-details icon="calendar_month" color="mat-color" [message]="repair.EntryDate"
+                        <app-card-details icon="calendar_month" color="mat-color" [message]="formatDate(repair.EntryDate)"
                             placeholder="Fecha de entrada:"></app-card-details>
 
-                        <app-card-details icon="pending_actions" color="mat-color" [message]="repair.DepartureDate"
+                        <app-card-details icon="pending_actions" color="mat-color" [message]="formatDate(repair.DepartureDate)"
                             placeholder="Fecha de salida:"></app-card-details>
 
 

@@ -9,6 +9,13 @@ export const MENU_ITEMS: MenuItem[] = [
   { name: 'Reparaciones', icon: 'handyman', route: '/admin/repair' },
   { name: 'Facturas', icon: 'request_quote', route: '/admin/billing' },
 ];
+export const MENU_ITEMS_EMPLEADO: MenuItem[] = [
+  { name: 'Inicio', icon: 'home', route: '/user/home' },
+  { name: 'Clientes', icon: 'group', route: '/user/clients' },
+  { name: 'Vehículos', icon: 'time_to_leave', route: '/user/vehicles' },
+  { name: 'Reparaciones', icon: 'handyman', route: '/user/repair' },
+  { name: 'Facturas', icon: 'request_quote', route: '/user/billing' },
+];
 
 export const PROFILE_USER: TblItem[] = [
   { name: 'Ususario' },

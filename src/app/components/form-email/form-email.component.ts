@@ -109,7 +109,7 @@ sendEmail(email: EmailSend){
       .sendEmail(email)
       .pipe(
         tap(() => {
-          this.loadingService.hide();
+          this.loadingService.show()
           this.dialogRef.close({ send: true });
         }),
         catchError((error) => {

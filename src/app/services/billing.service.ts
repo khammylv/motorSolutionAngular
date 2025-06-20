@@ -35,4 +35,9 @@ export class BillingService {
    getBillingById(id: number): Observable<Billings> {
       return this.http.get<Billings>(`${this.baseurl}/full/${id}`);
     }
+    getFacturaPdf(id: number) {
+    return this.http.get(`${this.baseurl}/pdf/${id}`, {
+      responseType: 'blob' 
+    });
+  }
 }

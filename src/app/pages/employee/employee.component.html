@@ -1,1 +1,7 @@
-<p>employee works!</p>
+<app-side-menu [items]="menuItems" class="hidden md:block w-60 fixed h-screen bg-white shadow-md z-40"></app-side-menu>
+
+<app-header class="fixed top-0 left-60 right-0 h-16 bg-white border-b border-gray-200 z-50"></app-header>
+
+<main class="ml-0 md:ml-60 pt-20 p-6 h-screen overflow-y-auto bg-gray-100">
+  <router-outlet></router-outlet>
+</main>

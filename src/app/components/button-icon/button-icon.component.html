@@ -1,7 +1,25 @@
-<button class="cursor-pointer uppercase text-xs flex flex-row items-center justify-center font-semibold"  (click)="onClick()">
-   <div class="mr-2">
-     <mat-icon fontIcon= {{icon}}  [ngClass]="color"></mat-icon>
-   </div>
-   
-    <p [ngClass]="color">{{message}}</p>
-</button>
+<ng-container [ngSwitch]="isMenu">
+  <ng-container *ngSwitchCase="'menu'">
+    <button mat-menu-item
+      class="cursor-pointer uppercase text-xs flex flex-row items-center justify-center font-semibold"
+      (click)="onClick()">
+      <div class="mr-2">
+        <mat-icon fontIcon={{icon}} [ngClass]="color"></mat-icon>
+      </div>
+
+      <p [ngClass]="color">{{message}}</p>
+    </button>
+
+  </ng-container>
+  <ng-container *ngSwitchCase="'button'">
+    <button class="cursor-pointer uppercase text-xs flex flex-row items-center justify-center font-semibold"
+      (click)="onClick()">
+      <div class="mr-2">
+        <mat-icon fontIcon={{icon}} [ngClass]="color"></mat-icon>
+      </div>
+
+      <p [ngClass]="color">{{message}}</p>
+    </button>
+
+  </ng-container>
+</ng-container>

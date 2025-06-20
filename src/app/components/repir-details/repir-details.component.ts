@@ -42,6 +42,9 @@ export class RepirDetailsComponent implements OnInit {
     this.getRepairDescription(this.data.id);
     this.billingId = this.sharedServices.generateId();
   }
+   formatDate(dateString: string | null | undefined): string {
+ return  this.sharedServices.formatDate(dateString);
+}
   getRepairDescription(id: number) {
     this.repairsSubscription = this.repairServices
       .getRepairDetails(id)

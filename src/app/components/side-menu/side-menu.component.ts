@@ -36,7 +36,7 @@ export class SideMenuComponent implements OnInit {
         .pipe(
           tap((data) => {
             this.company = data;
-            console.log(data);
+           
           }),
           catchError((error) => {
             console.error(error);

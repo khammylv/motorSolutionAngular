@@ -13,6 +13,7 @@ import { CompanyComponent } from './pages/company/company.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { BillingComponent } from './pages/billing/billing.component';
 import { RepairsComponent } from './pages/repairs/repairs.component';
+import { CreateCompanyComponent } from './pages/create-company/create-company.component';
 
 export const routes: Routes = [
     {path : 'login', component: LoginComponent,
@@ -35,8 +36,23 @@ export const routes: Routes = [
           ]
 
     },
+     {path : 'user', component: EmployeeComponent,
+        children: [
+           
+            { path: 'clients', component: ClientsComponent },
+            { path: 'vehicles', component: VehicleComponent },
+            { path: 'home', component: DashboarComponent },
+            { path: 'profile', component: ProfileComponent },
+            { path: 'repair', component: RepairsComponent },
+            { path: 'billing', component: BillingComponent },
+            { path: '', redirectTo: 'home', pathMatch: 'full' }, // Ruta por defecto
+          ]
+
+    },
     {path : 'company', component: CompanyComponent},
     {path : 'home', component: HomeComponent},
+     {path : 'register/company', component: CreateCompanyComponent},
     {path : 'dashboard', component: EmployeeComponent},
     { path: '',   redirectTo: 'login', pathMatch: 'full' },
 ];
+//EmployeeComponent

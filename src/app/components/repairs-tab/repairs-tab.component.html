@@ -1,82 +1,58 @@
-<div class="px-4 py-4 h-full overflow-y-auto overflow-x-hidden">
-  <div class="rounded-t mb-0 px-4 py-3 border-0">
-    <div class="flex flex-wrap items-center">
-      <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-        <h3 class="font-semibold text-base text-blueGray-700">Tabla de Reparaciones</h3>
-      </div>
-      <ng-container *ngIf="isVehicleMode">
-        <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-          <button (click)="registrarRepair()"
-            class="cursor-pointer bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-            type="button">
-            Agregar
+<!-- Menú global fuera del *ngFor -->
+<mat-menu #repairMenu="matMenu">
+  <app-button-icon icon="edit" color="icon-warning" (clicked)="editarRepair(selectedRepair?.RepairId)" [isMenu]="'menu'"
+    [message]="'Edit'"></app-button-icon>
+  <app-button-icon icon="delete" color="icon-error" (clicked)="eliminarRepair(selectedRepair?.RepairId)"
+    [isMenu]="'menu'" [message]="'Delete'"></app-button-icon>
+  <app-button-icon icon="check_circle" color="icon-done" (clicked)="doneRepair(selectedRepair?.RepairId)"
+    [isMenu]="'menu'" [message]="'Done'"></app-button-icon>
+</mat-menu>
+
+
+<!-- Tu tabla -->
+<table class="min-w-full leading-normal">
+  <thead>
+    <tr app-tbl-heads [items]="tblHeads"></tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let repair of repairs">
+      <td app-tbl-body [name]="repair.ClientName ?? ''" class="px-5 py-5 border-b bg-white text-sm"></td>
+      <td app-tbl-body [name]="formatDate(repair.EntryDate)" class="px-5 py-5 border-b bg-white text-sm"></td>
+      <td app-tbl-body [name]="formatDate(repair.DepartureDate)" class="px-5 py-5 border-b bg-white text-sm"></td>
+      <td app-tbl-body [name]="repair.Model ?? ''" class="px-5 py-5 border-b bg-white text-sm"></td>
+      <td app-tbl-body [name]="repair.Plate ?? ''" class="px-5 py-5 border-b bg-white text-sm"></td>
+
+
+      <td class="px-5 py-5 border-b bg-white text-sm space-x-5">
+        <!-- Estado -->
+        <div class="w-max inline-block mr-2">
+          <button (click)="cambiarStatus(repair.RepairId, repair.RepairStatus)"
+            class="cursor-pointer relative grid items-center font-sans font-bold uppercase whitespace-nowrap select-none py-1 px-2 text-xs rounded-md"
+            [ngClass]="repair.RepairStatus | statusClass">
+            <span>{{ repair.RepairStatus }}</span>
           </button>
         </div>
-      </ng-container>
 
-    </div>
-  </div>
 
-  <ng-container *ngIf="repairs?.length">
-    <div class="inline-block min-w-full shadow rounded-lg overflow-x-auto">
-      <table class="min-w-full leading-normal">
-        <thead>
-          <tr app-tbl-heads [items]="tblHeads"></tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let repair of repairs">
-            <td app-tbl-body [name]="repair.ClientName ?? ''" class="px-5 py-5 border-b bg-white text-sm"></td>
-            <td app-tbl-body [name]="repair.EntryDate" class="px-5 py-5 border-b bg-white text-sm"></td>
-            <td app-tbl-body [name]="repair.DepartureDate" class="px-5 py-5 border-b bg-white text-sm"></td>
-            <td app-tbl-body [name]="repair.Model ?? ''" class="px-5 py-5 border-b bg-white text-sm"></td>
-            <td app-tbl-body [name]="repair.Plate ?? ''" class="px-5 py-5 border-b bg-white text-sm"></td>
-            <td class="px-5 py-5 border-b bg-white text-sm space-x-5">
-              
-              <div class="w-max">
-                <button (click)="cambiarStatus(repair.RepairId, repair.RepairStatus)"
-                  class="cursor-pointer relative grid items-center font-sans font-bold uppercase whitespace-nowrap select-none py-1 px-2 text-xs rounded-md"
-                  [ngClass]="repair.RepairStatus | statusClass">
-                  <span>{{ repair.RepairStatus }}</span>
-                </button>
-              </div>
-             
-            <td class="px-5 py-5 border-b bg-white text-sm space-x-5">
-              
-              
-                <app-button-icon icon="visibility" color="mat-color"
-                  (clicked)="viewDetails(repair.RepairId)"></app-button-icon>
-                  <ng-container *ngIf="repair.RepairStatus == 'completado'">
-                    
-                       <app-button-icon icon="send" color="icon-color"
-                  (clicked)="sendEmail(repair.ClientId)"></app-button-icon>
-                    
-                    
-                  </ng-container>
-                  <ng-container *ngIf="isVehicleMode && repair.RepairStatus !== 'completado'">
-                    <div class=" grid grid-cols-3     py-3 ">
-                         <app-button-icon icon="edit" color="icon-warning"
-                  (clicked)="editarRepair(repair.RepairId)"></app-button-icon>
-                   <app-button-icon icon="delete" color="icon-error"
-                  (clicked)="eliminarRepair(repair.RepairId)"></app-button-icon>
-                  <app-button-icon icon="check_circle" color="icon-done"
-                  (clicked)="doneRepair(repair.RepairId)"></app-button-icon>
-                    </div>
-                   
-                  </ng-container>
-                
-              
-               
-            </td>
-          </tr>
-        </tbody>
-      </table>
 
-      <app-paginator-table *ngIf="pagination" [pagination]="pagination"
-        (paginationEvent)="repairsPagination($event)"></app-paginator-table>
-    </div>
-  </ng-container>
-  <ng-container *ngIf="!repairs?.length">
-    <app-information message="No existen reparaciones para mostrar."></app-information>
+      </td>
+      <td class="px-5 py-5 border-b bg-white text-sm space-x-5">
+               <ng-container *ngIf="isVehicleMode && repair.RepairStatus !== 'completado'">
+          <button matIconButton [matMenuTriggerFor]="repairMenu" (click)="selectedRepair = repair"
+            aria-label="Opciones">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+        </ng-container>
 
-  </ng-container>
-</div>
+
+       
+        <app-button-icon icon="visibility" color="mat-color" (clicked)="viewDetails(repair.RepairId)"></app-button-icon>
+
+       
+        <ng-container *ngIf="repair.RepairStatus === 'completado'">
+          <app-button-icon icon="send" color="icon-color" (clicked)="sendEmail(repair.ClientId)"></app-button-icon>
+        </ng-container>
+      </td>
+    </tr>
+  </tbody>
+</table>
