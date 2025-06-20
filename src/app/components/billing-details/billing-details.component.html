@@ -1,6 +1,6 @@
 <section >
   <app-loading></app-loading>
-  <div class="border-2 flex items-center p-2 rounded justify-between space-x-2 mb-3">
+  <div (click)="verFactura()" class="cursor-pointer w-32 border-2 flex items-center p-2 rounded justify-between space-x-2 mb-3">
     <div class="space-x-2 truncate">
       <svg xmlns="http://www.w3.org/2000/svg" class="fill-current inline text-gray-500" width="24" height="24"
         viewBox="0 0 24 24">
@@ -11,9 +11,7 @@
         factura.pdf
       </span>
     </div>
-    <button (click)="verFactura()"  class="text-purple-700 hover:underline">
-      Download
-    </button>
+   
   </div>
    <iframe style="display: block; border: none;"
  *ngIf="pdfUrl" [src]="pdfUrl" width="100%" height="600px"></iframe>

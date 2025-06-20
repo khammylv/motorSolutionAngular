@@ -10,7 +10,8 @@
 
 
 <!-- Tu tabla -->
-<table class="min-w-full leading-normal">
+ <ng-container *ngIf="repairs?.length">
+ <table class="min-w-full leading-normal">
   <thead>
     <tr app-tbl-heads [items]="tblHeads"></tr>
   </thead>
@@ -37,7 +38,7 @@
 
       </td>
       <td class="px-5 py-5 border-b bg-white text-sm space-x-5">
-               <ng-container *ngIf="isVehicleMode && repair.RepairStatus !== 'completado'">
+        <ng-container *ngIf="isVehicleMode && repair.RepairStatus !== 'completado'">
           <button matIconButton [matMenuTriggerFor]="repairMenu" (click)="selectedRepair = repair"
             aria-label="Opciones">
             <mat-icon>more_vert</mat-icon>
@@ -45,10 +46,10 @@
         </ng-container>
 
 
-       
+
         <app-button-icon icon="visibility" color="mat-color" (clicked)="viewDetails(repair.RepairId)"></app-button-icon>
 
-       
+
         <ng-container *ngIf="repair.RepairStatus === 'completado'">
           <app-button-icon icon="send" color="icon-color" (clicked)="sendEmail(repair.ClientId)"></app-button-icon>
         </ng-container>
@@ -56,3 +57,16 @@
     </tr>
   </tbody>
 </table>
+<div class="mt-2 inline-block min-w-full shadow rounded-lg overflow-x-auto">
+
+
+  <app-paginator-table *ngIf="pagination" [pagination]="pagination"
+    (paginationEvent)="repairsPagination($event)"></app-paginator-table>
+</div>
+ </ng-container>
+
+
+ <ng-container *ngIf="!repairs?.length">
+    <app-information message="No existen reparaciones para mostrar."></app-information>
+
+  </ng-container>

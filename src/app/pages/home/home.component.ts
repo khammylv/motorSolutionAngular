@@ -34,4 +34,11 @@ export class HomeComponent {
    
     this.router.navigate(["/register/company"]);
   }
+  login() {
+    /*if (this.companyRegister.invalid) {
+      return; // No enviar si hay errores
+    }*/
+   
+    this.router.navigate(["/login"]);
+  }
 }

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Company, CompanyLogin } from '../models/Company.model';
+import { Company, CompanyLogin, Sumary } from '../models/Company.model';
 import { Observable, tap } from 'rxjs';
 
 @Injectable({
@@ -24,4 +24,10 @@ export class CompanyService {
         })
       );
    }
+
+    getCompanySumary(id: number): Observable<Sumary> {
+       return this.http.get<Sumary>(
+         `${this.baseurl}/sumary/${id}`
+       );
+     }
 }

@@ -53,6 +53,6 @@ export const routes: Routes = [
     {path : 'home', component: HomeComponent},
      {path : 'register/company', component: CreateCompanyComponent},
     {path : 'dashboard', component: EmployeeComponent},
-    { path: '',   redirectTo: 'login', pathMatch: 'full' },
+    { path: '',   redirectTo: 'home', pathMatch: 'full' },
 ];
 //EmployeeComponent
