@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://MotorSolution.somee.com/api'
+  apiUrl: 'https://MotorSolution.somee.com/api'
 };
