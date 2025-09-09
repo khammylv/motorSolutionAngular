@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {PageEvent, MatPaginatorModule} from '@angular/material/paginator';
-import { Pagination } from '../../models/Pagination.model';
+import { Pagination } from 'app/models/Pagination.model';
 
 @Component({
   selector: 'app-paginator-table',

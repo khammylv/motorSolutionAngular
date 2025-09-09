@@ -1,31 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { TblItem } from '../../models/TblItem.model';
-import { User } from '../../models/User.model';
-import { TblHeadsComponent } from '../../components/tbl-heads/tbl-heads.component';
-import { TblBodyComponent } from '../../components/tbl-body/tbl-body.component';
+import { TblItem } from 'app/models/TblItem.model';
+import { User } from 'app/models/User.model';
 import { CommonModule } from '@angular/common';
-import { DialogService } from '../../services/dialog.service';
-import { FormUserComponent } from '../../components/form-user/form-user.component';
-import { PaginatorTableComponent } from '../../components/paginator-table/paginator-table.component';
-import { UserService } from '../../services/user.service';
+import { DialogService } from 'app/services/dialog.service';
+import { FormUserComponent } from 'app/components/form-user/form-user.component';
+import { PaginatorTableComponent } from 'app/components/paginator-table/paginator-table.component';
+import { UserService } from 'app/services/user.service';
 import { catchError, of, Subscription, tap } from 'rxjs';
-import { Pagination } from '../../models/Pagination.model';
-import { DeleteConfirmComponent } from '../../components/delete-confirm/delete-confirm.component';
-import { ButtonIconComponent } from '../../components/button-icon/button-icon.component';
-import { ConfigurationService } from '../../services/configuration.service';
-import { ERROR_CLASS, SUCCES_CLASS, TBL_USER } from '../../utils/constanst';
-import { InformationComponent } from '../../components/information/information.component';
-import { SharedService } from '../../services/shared.service';
-import { CardDetailsComponent } from '../../components/card-details/card-details.component';
-import { FirstLetterUppercasePipe } from '../../pipes/first-letter-uppercase.pipe';
+import { Pagination } from 'app/models/Pagination.model';
+import { DeleteConfirmComponent } from 'app/components/delete-confirm/delete-confirm.component';
+import { ButtonIconComponent } from 'app/components/button-icon/button-icon.component';
+import { ConfigurationService } from 'app/services/configuration.service';
+import { ERROR_CLASS, SUCCES_CLASS, TBL_USER } from 'app/utils/constanst';
+import { InformationComponent } from 'app/components/information/information.component';
+import { SharedService } from 'app/services/shared.service';
+import { CardDetailsComponent } from 'app/components/card-details/card-details.component';
+import { FirstLetterUppercasePipe } from 'app/pipes/first-letter-uppercase.pipe';
 
 @Component({
   selector: 'app-users',
   standalone: true,
   imports: [
     CommonModule,
-    TblHeadsComponent,
-    TblBodyComponent,
+   
     PaginatorTableComponent,
     ButtonIconComponent,
     InformationComponent,

@@ -1,26 +1,27 @@
 import { Component, Input, OnInit } from '@angular/core';
+
 import { ERROR_CLASS, SUCCES_CLASS, TBL_REPAIRS } from '../../utils/constanst';
-import { TblItem } from '../../models/TblItem.model';
-import { Repairs, RepairsDTO, RepairStatus } from '../../models/repair.model';
+import { TblItem } from 'app/models/TblItem.model';
+import { Repairs, RepairsDTO, RepairStatus } from 'app/models/repair.model';
 import { catchError, of, Subscription, tap } from 'rxjs';
-import { Pagination } from '../../models/Pagination.model';
-import { RepairsService } from '../../services/repairs.service';
-import { CommonModule, DatePipe } from '@angular/common';
-import { TblHeadsComponent } from '../tbl-heads/tbl-heads.component';
-import { TblBodyComponent } from '../tbl-body/tbl-body.component';
-import { PaginatorTableComponent } from '../paginator-table/paginator-table.component';
-import { ButtonIconComponent } from '../button-icon/button-icon.component';
-import { InformationComponent } from '../information/information.component';
-import { DialogService } from '../../services/dialog.service';
-import { RepirDetailsComponent } from '../repir-details/repir-details.component';
-import { StatusClassPipe } from '../../pipes/status-class.pipe';
-import { FormStatusComponent } from '../form-status/form-status.component';
-import { FormRepairComponent } from '../form-repair/form-repair.component';
-import { SharedService } from '../../services/shared.service';
-import { ConfigurationService } from '../../services/configuration.service';
-import { RefreshService } from '../../services/refresh.service';
-import { DeleteConfirmComponent } from '../delete-confirm/delete-confirm.component';
-import { FormEmailComponent } from '../form-email/form-email.component';
+import { Pagination } from 'app/models/Pagination.model';
+import { RepairsService } from 'app/services/repairs.service';
+import { CommonModule } from '@angular/common';
+import { TblHeadsComponent } from 'app/components/tbl-heads/tbl-heads.component';
+import { TblBodyComponent } from 'app/components/tbl-body/tbl-body.component';
+import { PaginatorTableComponent } from 'app/components/paginator-table/paginator-table.component';
+import { ButtonIconComponent } from 'app/components/button-icon/button-icon.component';
+import { InformationComponent } from 'app/components/information/information.component';
+import { DialogService } from 'app/services/dialog.service';
+import { RepirDetailsComponent } from 'app/components/repir-details/repir-details.component';
+import { StatusClassPipe } from 'app/pipes/status-class.pipe';
+import { FormStatusComponent } from 'app/components/form-status/form-status.component';
+import { FormRepairComponent } from 'app/components/form-repair/form-repair.component';
+import { SharedService } from 'app/services/shared.service';
+import { ConfigurationService } from 'app/services/configuration.service';
+import { RefreshService } from 'app/services/refresh.service';
+import { DeleteConfirmComponent } from 'app/components/delete-confirm/delete-confirm.component';
+import { FormEmailComponent } from 'app/components/form-email/form-email.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -354,7 +355,7 @@ export class RepairsTabComponent implements OnInit {
          .openDialog(FormEmailComponent, 'Eliminar reparación', {
            action: 'sendEmail',
            id: id,
-         })
+         },'50vw')
          .afterClosed()
          .subscribe((result) => {
           if(result){

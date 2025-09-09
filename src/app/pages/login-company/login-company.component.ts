@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { InputPasswordComponent } from '../../components/input-password/input-password.component';
-import { InputEmailComponent } from '../../components/input-email/input-email.component';
-import { SnackbarService } from '../../services/snackbar.service';
-import { CompanyService } from '../../services/company.service';
+import { InputPasswordComponent } from 'app/components/input-password/input-password.component';
+import { InputEmailComponent } from 'app/components/input-email/input-email.component';
+import { SnackbarService } from 'app/services/snackbar.service';
+import { CompanyService } from 'app/services/company.service';
 import { catchError, of, tap } from 'rxjs';
 import { Router } from '@angular/router';
-import { ConfigurationService } from '../../services/configuration.service';
+import { ConfigurationService } from 'app/services/configuration.service';
 
 @Component({
   selector: 'app-login-company',

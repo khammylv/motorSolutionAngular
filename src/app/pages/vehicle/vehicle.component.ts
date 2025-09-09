@@ -1,25 +1,23 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { TblHeadsComponent } from '../../components/tbl-heads/tbl-heads.component';
-import { TblBodyComponent } from '../../components/tbl-body/tbl-body.component';
-import { PaginatorTableComponent } from '../../components/paginator-table/paginator-table.component';
-import { ButtonIconComponent } from '../../components/button-icon/button-icon.component';
-import { InformationComponent } from '../../components/information/information.component';
-import { TblItem } from '../../models/TblItem.model';
-import { TBL_VEHICLE } from '../../utils/constanst';
-import { Vehicle } from '../../models/vehicle.model';
+
+import { PaginatorTableComponent } from 'app/components/paginator-table/paginator-table.component';
+
+import { InformationComponent } from 'app/components/information/information.component';
+import { TblItem } from 'app/models/TblItem.model';
+import { TBL_VEHICLE } from 'app/utils/constanst';
+
 import { catchError, of, Subscription, tap } from 'rxjs';
-import { Pagination } from '../../models/Pagination.model';
-import { DialogService } from '../../services/dialog.service';
-import { VehiclesService } from '../../services/vehicles.service';
-import { ConfigurationService } from '../../services/configuration.service';
-import { VehiclesTabComponent } from '../../components/vehicles-tab/vehicles-tab.component';
+import { Pagination } from 'app/models/Pagination.model';
+
+import { ConfigurationService } from 'app/services/configuration.service';
+import { VehiclesTabComponent } from 'app/components/vehicles-tab/vehicles-tab.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
-import { SharedService } from '../../services/shared.service';
-import { ClientsService } from '../../services/clients.service';
-import { Clients } from '../../models/clients.model';
-import {MatAccordion, MatExpansionModule} from '@angular/material/expansion';
+
+import { ClientsService } from 'app/services/clients.service';
+import { Clients } from 'app/models/clients.model';
+import { MatExpansionModule} from '@angular/material/expansion';
 
 @Component({
   selector: 'app-vehicle',
@@ -37,9 +35,7 @@ import {MatAccordion, MatExpansionModule} from '@angular/material/expansion';
 })
 export class VehicleComponent implements OnInit {
   constructor(
-    private dialogService: DialogService,
-    private vehiclesServices: VehiclesService,
-    private sharedServices: SharedService,
+   
     private clientServices: ClientsService,
     private configurationServices: ConfigurationService
   ) {}

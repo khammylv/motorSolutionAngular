@@ -7,18 +7,18 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { NameFormPipe } from '../../pipes/name-form.pipe';
-import { InputEmailComponent } from '../input-email/input-email.component';
-import { InputTextComponent } from '../input-text/input-text.component';
-import { LoadingComponent } from '../loading/loading.component';
-import { VehiclesService } from '../../services/vehicles.service';
+
+import { NameFormPipe } from 'app/pipes/name-form.pipe';
+import { InputTextComponent } from 'app/components/input-text/input-text.component';
+import { LoadingComponent } from 'app/components/loading/loading.component';
+import { VehiclesService } from 'app/services/vehicles.service';
 import { MatDialogRef } from '@angular/material/dialog';
-import { ConfigurationService } from '../../services/configuration.service';
-import { SharedService } from '../../services/shared.service';
-import { LoadingService } from '../../services/loading.service';
+import { ConfigurationService } from 'app/services/configuration.service';
+import { SharedService } from 'app/services/shared.service';
+import { LoadingService } from 'app/services/loading.service';
 import { catchError, of, Subscription, tap } from 'rxjs';
-import { Vehicle } from '../../models/vehicle.model';
-import { ERROR_CLASS, INFO_CLASS } from '../../utils/constanst';
+import { Vehicle } from 'app/models/vehicle.model';
+import { ERROR_CLASS, INFO_CLASS } from 'app/utils/constanst';
 
 @Component({
   selector: 'app-form-vehicle',
@@ -26,7 +26,6 @@ import { ERROR_CLASS, INFO_CLASS } from '../../utils/constanst';
     CommonModule,
     ReactiveFormsModule,
     InputTextComponent,
-    InputEmailComponent,
     NameFormPipe,
     LoadingComponent,
   ],

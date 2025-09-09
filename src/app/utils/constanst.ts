@@ -1,5 +1,5 @@
-import { MenuItem } from '../models/menuItem.model';
-import { TblItem } from '../models/TblItem.model';
+import { MenuItem } from 'app/models/menuItem.model';
+import { TblItem } from 'app/models/TblItem.model';
 
 export const MENU_ITEMS: MenuItem[] = [
   { name: 'Inicio', icon: 'home', route: '/admin/home' },

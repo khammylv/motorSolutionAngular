@@ -1,7 +1,8 @@
-import { Component,Input , Output, EventEmitter,forwardRef  } from '@angular/core';
+import { Component,Input ,forwardRef  } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RemoveLettersPipe } from '../../pipes/remove-letters.pipe';
+
+import { RemoveLettersPipe } from 'app/pipes/remove-letters.pipe';
 
 @Component({
   selector: 'app-input-text',

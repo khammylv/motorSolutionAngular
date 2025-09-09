@@ -7,21 +7,22 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { InputTextComponent } from '../input-text/input-text.component';
-import { InputEmailComponent } from '../input-email/input-email.component';
-import { User } from '../../models/User.model';
+
+import { InputTextComponent } from 'app/components/input-text/input-text.component';
+import { InputEmailComponent } from 'app/components/input-email/input-email.component';
+import { User } from 'app/models/User.model';
 import { CommonModule } from '@angular/common';
-import { NameFormPipe } from '../../pipes/name-form.pipe';
-import { UserService } from '../../services/user.service';
+import { NameFormPipe } from 'app/pipes/name-form.pipe';
+import { UserService } from 'app/services/user.service';
 import { catchError, of, Subscription, tap } from 'rxjs';
 import { MatDialogRef } from '@angular/material/dialog';
-import { SelectOption } from '../../models/TblItem.model';
-import { ConfigurationService } from '../../services/configuration.service';
-import { InputSelectComponent } from '../input-select/input-select.component';
-import { SharedService } from '../../services/shared.service';
-import { LoadingComponent } from '../loading/loading.component';
-import { LoadingService } from '../../services/loading.service';
-import { ERROR_CLASS, INFO_CLASS } from '../../utils/constanst';
+import { SelectOption } from 'app/models/TblItem.model';
+import { ConfigurationService } from 'app/services/configuration.service';
+import { InputSelectComponent } from 'app/components/input-select/input-select.component';
+import { SharedService } from 'app/services/shared.service';
+import { LoadingComponent } from 'app/components/loading/loading.component';
+import { LoadingService } from 'app/services/loading.service';
+import { ERROR_CLASS, INFO_CLASS } from 'app/utils/constanst';
 
 @Component({
   selector: 'app-form-user',

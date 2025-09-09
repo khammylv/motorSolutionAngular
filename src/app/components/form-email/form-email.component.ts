@@ -1,20 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { InputTextComponent } from '../input-text/input-text.component';
-import { NameFormPipe } from '../../pipes/name-form.pipe';
-import { LoadingComponent } from '../loading/loading.component';
+
+import { InputTextComponent } from 'app/components/input-text/input-text.component';
+import { LoadingComponent } from 'app/components/loading/loading.component';
 import { catchError, of, Subscription, tap } from 'rxjs';
-import { ConfigurationService } from '../../services/configuration.service';
+import { ConfigurationService } from 'app/services/configuration.service';
 import { MatDialogRef } from '@angular/material/dialog';
-import { SharedService } from '../../services/shared.service';
-import { ERROR_CLASS, INFO_CLASS } from '../../utils/constanst';
-import { RepairsService } from '../../services/repairs.service';
-import { EmailSend } from '../../models/Email.model';
-import { LoadingService } from '../../services/loading.service';
-import { InputEmailComponent } from '../input-email/input-email.component';
-import { ClientsService } from '../../services/clients.service';
-import { Clients } from '../../models/clients.model';
+import { SharedService } from 'app/services/shared.service';
+import { ERROR_CLASS, INFO_CLASS } from 'app/utils/constanst';
+import { RepairsService } from 'app/services/repairs.service';
+import { EmailSend } from 'app/models/Email.model';
+import { LoadingService } from 'app/services/loading.service';
+import { InputEmailComponent } from 'app/components/input-email/input-email.component';
+import { ClientsService } from 'app/services/clients.service';
+import { Clients } from 'app/models/clients.model';
 
 @Component({
   selector: 'app-form-email',

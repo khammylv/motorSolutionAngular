@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Repairs, Status, statusModel } from '../../models/repair.model';
-import { RepairsService } from '../../services/repairs.service';
-import { ConfigurationService } from '../../services/configuration.service';
+import {  statusModel } from 'app/models/repair.model';
+import { RepairsService } from 'app/services/repairs.service';
+import { ConfigurationService } from 'app/services/configuration.service';
 import { catchError, forkJoin, of, Subscription, tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { CompanyService } from '../../services/company.service';
-import { sumaryModel } from '../../models/Company.model';
+import { CompanyService } from 'app/services/company.service';
+import { sumaryModel } from 'app/models/Company.model';
 
 @Component({
   selector: 'app-dashboar',

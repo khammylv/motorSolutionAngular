@@ -1,7 +1,7 @@
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Roles, UserTokenPayload } from '../models/User.model';
 import { jwtDecode } from 'jwt-decode';
-import { CompanyTokenPayload } from '../models/Company.model';
+import { CompanyTokenPayload } from 'app/models/Company.model';
 import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({

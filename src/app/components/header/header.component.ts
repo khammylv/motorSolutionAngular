@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
-import { ButtonIconComponent } from '../button-icon/button-icon.component';
+
+import { ButtonIconComponent } from 'app/components/button-icon/button-icon.component';
 import { Router } from '@angular/router';
-import { ConfigurationService } from '../../services/configuration.service';
+import { ConfigurationService } from 'app/services/configuration.service';
 
 @Component({
   selector: 'app-header',

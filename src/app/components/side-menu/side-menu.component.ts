@@ -1,10 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { MenuItem } from '../../models/menuItem.model';
-import { LinkMenuComponent } from '../link-menu/link-menu.component';
-import { CompanyService } from '../../services/company.service';
-import { ConfigurationService } from '../../services/configuration.service';
-import { Company } from '../../models/Company.model';
+
+import { MenuItem } from 'app/models/menuItem.model';
+import { LinkMenuComponent } from 'app/components/link-menu/link-menu.component';
+import { CompanyService } from 'app/services/company.service';
+import { ConfigurationService } from 'app/services/configuration.service';
+import { Company } from 'app/models/Company.model';
 import { catchError, of, tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';

@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { RepairsService } from '../../services/repairs.service';
-import { ConfigurationService } from '../../services/configuration.service';
+import { RepairsService } from 'app/services/repairs.service';
+import { ConfigurationService } from 'app/services/configuration.service';
 import { catchError, of, Subscription, tap } from 'rxjs';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
-import { VehiclesService } from '../../services/vehicles.service';
-import { Vehicle } from '../../models/vehicle.model';
-import { Pagination } from '../../models/Pagination.model';
-import { RepairsTabComponent } from '../../components/repairs-tab/repairs-tab.component';
+import { VehiclesService } from 'app/services/vehicles.service';
+import { Vehicle } from 'app/models/vehicle.model';
+import { Pagination } from 'app/models/Pagination.model';
+import { RepairsTabComponent } from 'app/components/repairs-tab/repairs-tab.component';
 import { CommonModule } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { PaginatorTableComponent } from '../../components/paginator-table/paginator-table.component';
-import { InformationComponent } from '../../components/information/information.component';
+import { PaginatorTableComponent } from 'app/components/paginator-table/paginator-table.component';
+import { InformationComponent } from 'app/components/information/information.component';
 
 @Component({
   selector: 'app-repairs',

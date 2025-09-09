@@ -1,12 +1,12 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { RepairsService } from '../../services/repairs.service';
-import { BillingService } from '../../services/billing.service';
-import { Billings } from '../../models/Billing.models';
-import { RepairsDetails } from '../../models/repair.model';
+import { RepairsService } from 'app/services/repairs.service';
+import { BillingService } from 'app/services/billing.service';
+import { Billings } from 'app/models/Billing.models';
+import { RepairsDetails } from 'app/models/repair.model';
 import { catchError, of, Subscription, switchMap, tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { LoadingComponent } from '../loading/loading.component';
-import { LoadingService } from '../../services/loading.service';
+import { LoadingComponent } from 'app/components/loading/loading.component';
+import { LoadingService } from 'app/services/loading.service';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({

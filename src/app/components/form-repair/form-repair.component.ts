@@ -7,18 +7,16 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+
 import { MatDialogRef } from '@angular/material/dialog';
-import { InputTextComponent } from '../input-text/input-text.component';
-import { ConfigurationService } from '../../services/configuration.service';
-import { SharedService } from '../../services/shared.service';
-import { RepairsDetails, RepairsDTO } from '../../models/repair.model';
-import { NameFormPipe } from '../../pipes/name-form.pipe';
+import { InputTextComponent } from 'app/components/input-text/input-text.component';
+import { SharedService } from 'app/services/shared.service';
+import { RepairsDetails, RepairsDTO } from 'app/models/repair.model';
 import { catchError, of, Subscription, tap } from 'rxjs';
-import { RepairsService } from '../../services/repairs.service';
-import { threadId } from 'worker_threads';
-import { ERROR_CLASS, INFO_CLASS, SUCCES_CLASS } from '../../utils/constanst';
-import { LoadingService } from '../../services/loading.service';
-import { LoadingComponent } from '../loading/loading.component';
+import { RepairsService } from 'app/services/repairs.service';
+import { ERROR_CLASS, INFO_CLASS, SUCCES_CLASS } from 'app/utils/constanst';
+import { LoadingService } from 'app/services/loading.service';
+import { LoadingComponent } from 'app/components/loading/loading.component';
 
 @Component({
   selector: 'app-form-repair',
@@ -26,8 +24,7 @@ import { LoadingComponent } from '../loading/loading.component';
     CommonModule,
     ReactiveFormsModule,
     InputTextComponent,
-    NameFormPipe,
-    LoadingComponent,
+     LoadingComponent,
   ],
   templateUrl: './form-repair.component.html',
   styleUrl: './form-repair.component.css',
@@ -47,7 +44,6 @@ export class FormRepairComponent implements OnInit {
     @Inject('dialogData') public data: any,
     private dialogRef: MatDialogRef<any>,
     private formBuilder: FormBuilder,
-    private configurationServices: ConfigurationService,
     private sharedServices: SharedService,
     private repairServices: RepairsService,
     private loadingService: LoadingService

@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { InputPasswordComponent } from '../../components/input-password/input-password.component';
-import { InputEmailComponent } from '../../components/input-email/input-email.component';
-import { InputTextComponent } from '../../components/input-text/input-text.component';
+import {  FormGroup, ReactiveFormsModule } from '@angular/forms';
+
 import { CommonModule } from '@angular/common';
-import { SharedService } from '../../services/shared.service';
+
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,7 +15,7 @@ export class HomeComponent {
   companyRegister!: FormGroup;
   companyCode!: number;
   isLoading: boolean = false;
-  constructor(private formBuilder: FormBuilder, private sharedServices: SharedService,private router: Router){}
+  constructor(private router: Router){}
   
   ngOnInit(): void {
   

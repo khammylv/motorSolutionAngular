@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { PROFILE_COMPANY, PROFILE_USER } from '../../utils/constanst';
-import { TblItem } from '../../models/TblItem.model';
+import { PROFILE_COMPANY, PROFILE_USER } from 'app/utils/constanst';
+import { TblItem } from 'app/models/TblItem.model';
 import { CommonModule } from '@angular/common';
-import { ConfigurationService } from '../../services/configuration.service';
-import { UserService } from '../../services/user.service';
-import { User } from '../../models/User.model';
+import { ConfigurationService } from 'app/services/configuration.service';
+import { UserService } from 'app/services/user.service';
+import { User } from 'app/models/User.model';
 import { catchError, of, tap } from 'rxjs';
-import { error } from 'console';
-import { CompanyService } from '../../services/company.service';
-import { Company } from '../../models/Company.model';
+import { CompanyService } from 'app/services/company.service';
+import { Company } from 'app/models/Company.model';
 
 @Component({
   selector: 'app-profile',

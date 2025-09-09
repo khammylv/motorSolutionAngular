@@ -1,27 +1,25 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { TblHeadsComponent } from '../tbl-heads/tbl-heads.component';
-import { TblBodyComponent } from '../tbl-body/tbl-body.component';
-import { PaginatorTableComponent } from '../paginator-table/paginator-table.component';
-import { ButtonIconComponent } from '../button-icon/button-icon.component';
-import { InformationComponent } from '../information/information.component';
-import { DialogService } from '../../services/dialog.service';
-import { VehiclesService } from '../../services/vehicles.service';
-import { SharedService } from '../../services/shared.service';
-import { ConfigurationService } from '../../services/configuration.service';
-import { ERROR_CLASS, SUCCES_CLASS, TBL_VEHICLE } from '../../utils/constanst';
-import { TblItem } from '../../models/TblItem.model';
-import { Vehicle } from '../../models/vehicle.model';
+
+
+import { PaginatorTableComponent } from 'app/components/paginator-table/paginator-table.component';
+import { ButtonIconComponent } from 'app/components/button-icon/button-icon.component';
+import { InformationComponent } from 'app/components/information/information.component';
+import { DialogService } from 'app/services/dialog.service';
+import { VehiclesService } from 'app/services/vehicles.service';
+import { SharedService } from 'app/services/shared.service';
+import { ConfigurationService } from 'app/services/configuration.service';
+import { ERROR_CLASS, SUCCES_CLASS, TBL_VEHICLE } from 'app/utils/constanst';
+import { TblItem } from 'app/models/TblItem.model';
+import { Vehicle } from 'app/models/vehicle.model';
 import { catchError, of, Subscription, tap } from 'rxjs';
-import { Pagination } from '../../models/Pagination.model';
-import { ClientsService } from '../../services/clients.service';
-import { Clients } from '../../models/clients.model';
-import { FormVehicleComponent } from '../form-vehicle/form-vehicle.component';
-import { DeleteConfirmComponent } from '../delete-confirm/delete-confirm.component';
-import { RefreshService } from '../../services/refresh.service';
-import { FirstLetterUppercasePipe } from '../../pipes/first-letter-uppercase.pipe';
-import { CardDetailsComponent } from '../card-details/card-details.component';
-import { StatusClassPipe } from '../../pipes/status-class.pipe';
+import { Pagination } from 'app/models/Pagination.model';
+import { FormVehicleComponent } from 'app/components/form-vehicle/form-vehicle.component';
+import { DeleteConfirmComponent } from 'app/components/delete-confirm/delete-confirm.component';
+import { RefreshService } from 'app/services/refresh.service';
+import { FirstLetterUppercasePipe } from 'app/pipes/first-letter-uppercase.pipe';
+import { CardDetailsComponent } from 'app/components/card-details/card-details.component';
+
 
 @Component({
   selector: 'app-vehicles-tab',

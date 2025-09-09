@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { MenuItem } from '../../models/menuItem.model';
-import { MENU_ITEMS } from '../../utils/constanst';
+import { MenuItem } from 'app/models/menuItem.model';
+import { MENU_ITEMS } from 'app/utils/constanst';
 
 @Component({
   selector: 'app-company',

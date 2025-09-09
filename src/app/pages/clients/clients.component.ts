@@ -1,32 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { TblItem } from '../../models/TblItem.model';
-import { ERROR_CLASS, SUCCES_CLASS, TBL_CLIENT } from '../../utils/constanst';
-import { Clients } from '../../models/clients.model';
+import { TblItem } from 'app/models/TblItem.model';
+import { ERROR_CLASS, SUCCES_CLASS, TBL_CLIENT } from 'app/utils/constanst';
+import { Clients } from 'app/models/clients.model';
 import { catchError, of, Subscription, tap } from 'rxjs';
-import { Pagination } from '../../models/Pagination.model';
-import { ClientsService } from '../../services/clients.service';
-import { ConfigurationService } from '../../services/configuration.service';
+import { Pagination } from 'app/models/Pagination.model';
+import { ClientsService } from 'app/services/clients.service';
+import { ConfigurationService } from 'app/services/configuration.service';
 import { CommonModule } from '@angular/common';
-import { TblHeadsComponent } from '../../components/tbl-heads/tbl-heads.component';
-import { TblBodyComponent } from '../../components/tbl-body/tbl-body.component';
-import { PaginatorTableComponent } from '../../components/paginator-table/paginator-table.component';
-import { ButtonIconComponent } from '../../components/button-icon/button-icon.component';
-import { FormClientsComponent } from '../../components/form-clients/form-clients.component';
-import { DialogService } from '../../services/dialog.service';
-import { DeleteConfirmComponent } from '../../components/delete-confirm/delete-confirm.component';
-import { InformationComponent } from '../../components/information/information.component';
-import { SharedService } from '../../services/shared.service';
-import { RefreshService } from '../../services/refresh.service';
+import { PaginatorTableComponent } from 'app/components/paginator-table/paginator-table.component';
+import { ButtonIconComponent } from 'app/components/button-icon/button-icon.component';
+import { FormClientsComponent } from 'app/components/form-clients/form-clients.component';
+import { DialogService } from 'app/services/dialog.service';
+import { DeleteConfirmComponent } from 'app/components/delete-confirm/delete-confirm.component';
+import { InformationComponent } from 'app/components/information/information.component';
+import { SharedService } from 'app/services/shared.service';
+import { RefreshService } from 'app/services/refresh.service';
 import { MatIconModule } from '@angular/material/icon';
-import { FirstLetterUppercasePipe } from '../../pipes/first-letter-uppercase.pipe';
-import { CardDetailsComponent } from '../../components/card-details/card-details.component';
+import { FirstLetterUppercasePipe } from 'app/pipes/first-letter-uppercase.pipe';
+import { CardDetailsComponent } from 'app/components/card-details/card-details.component';
 
 @Component({
   selector: 'app-clients',
   imports: [
     CommonModule,
-    TblHeadsComponent,
-    TblBodyComponent,
     PaginatorTableComponent,
     ButtonIconComponent,
     InformationComponent,

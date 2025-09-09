@@ -1,17 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { PaginatorTableComponent } from '../paginator-table/paginator-table.component';
-import { InformationComponent } from '../information/information.component';
-import { ButtonIconComponent } from '../button-icon/button-icon.component';
-import { Billings } from '../../models/Billing.models';
-import { Pagination } from '../../models/Pagination.model';
+import { PaginatorTableComponent } from 'app/components/paginator-table/paginator-table.component';
+import { InformationComponent } from 'app/components/information/information.component';
+import { ButtonIconComponent } from 'app/components/button-icon/button-icon.component';
+import { Billings } from 'app/models/Billing.models';
+import { Pagination } from 'app/models/Pagination.model';
 import { catchError, of, Subscription, tap } from 'rxjs';
-import { BillingService } from '../../services/billing.service';
-import { DialogService } from '../../services/dialog.service';
-import { BillingDetailsComponent } from '../billing-details/billing-details.component';
+import { BillingService } from 'app/services/billing.service';
+import { DialogService } from 'app/services/dialog.service';
+import { BillingDetailsComponent } from 'app/components/billing-details/billing-details.component';
 import { DomSanitizer } from '@angular/platform-browser';
-import { LoadingComponent } from '../loading/loading.component';
-import { LoadingService } from '../../services/loading.service';
+import { LoadingComponent } from 'app/components/loading/loading.component';
+import { LoadingService } from 'app/services/loading.service';
 
 @Component({
   selector: 'app-billing-tab',

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { InputPasswordComponent } from '../../components/input-password/input-password.component';
-import { InputEmailComponent } from '../../components/input-email/input-email.component';
-import { ConfigurationService } from '../../services/configuration.service';
-import { UserService } from '../../services/user.service';
+import { InputPasswordComponent } from 'app/components/input-password/input-password.component';
+import { InputEmailComponent } from 'app/components/input-email/input-email.component';
+import { ConfigurationService } from 'app/services/configuration.service';
+import { UserService } from 'app/services/user.service';
 import { catchError, of, tap } from 'rxjs';
-import { SnackbarService } from '../../services/snackbar.service';
+import { SnackbarService } from 'app/services/snackbar.service';
 
 
 @Component({

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { HeaderComponent } from '../../components/header/header.component';
-import { SideMenuComponent } from '../../components/side-menu/side-menu.component';
-import { MenuItem } from '../../models/menuItem.model';
-import { MENU_ITEMS_EMPLEADO } from '../../utils/constanst';
+import { HeaderComponent } from 'app/components/header/header.component';
+import { SideMenuComponent } from 'app/components/side-menu/side-menu.component';
+import { MenuItem } from 'app/models/menuItem.model';
+import { MENU_ITEMS_EMPLEADO } from 'app/utils/constanst';
 
 @Component({
   selector: 'app-employee',

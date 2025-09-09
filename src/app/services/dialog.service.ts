@@ -1,6 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { MatDialog ,MatDialogRef } from '@angular/material/dialog';
-import { DynamicDialogComponent } from '../components/dynamic-dialog/dynamic-dialog.component';
+import { DynamicDialogComponent } from 'app/components/dynamic-dialog/dynamic-dialog.component';
 
 @Injectable({
   providedIn: 'root',

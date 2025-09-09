@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Vehicle, vehicleData } from '../models/vehicle.model';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Vehicle, vehicleData } from 'app/models/vehicle.model';
+import {  Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 @Injectable({

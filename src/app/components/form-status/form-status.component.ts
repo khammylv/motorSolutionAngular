@@ -9,9 +9,10 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { SharedService } from '../../services/shared.service';
-import { INFO_CLASS } from '../../utils/constanst';
-import { InputSelectComponent } from '../input-select/input-select.component';
+
+import { SharedService } from 'app/services/shared.service';
+import { INFO_CLASS } from 'app/utils/constanst';
+import { InputSelectComponent } from 'app/components/input-select/input-select.component';
 import { CommonModule } from '@angular/common';
 
 @Component({

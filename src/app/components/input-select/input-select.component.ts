@@ -1,5 +1,6 @@
-import { Component, forwardRef, Input, OnChanges, OnInit } from '@angular/core';
-import { SelectOption } from '../../models/TblItem.model';
+import { Component, forwardRef, Input} from '@angular/core';
+
+import { SelectOption } from 'app/models/TblItem.model';
 import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 

@@ -1,16 +1,17 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { catchError, of, Subscription, tap } from 'rxjs';
-import { RepairsService } from '../../services/repairs.service';
+
+import { RepairsService } from 'app/services/repairs.service';
 import { CommonModule } from '@angular/common';
-import { StatusClassPipe } from '../../pipes/status-class.pipe';
-import { FirstLetterUppercasePipe } from '../../pipes/first-letter-uppercase.pipe';
-import { CardDetailsComponent } from '../card-details/card-details.component';
-import { Repairs, RepairsDetails } from '../../models/repair.model';
-import { BillingService } from '../../services/billing.service';
-import { SharedService } from '../../services/shared.service';
-import { ERROR_CLASS, SUCCES_CLASS } from '../../utils/constanst';
-import { BillingsDTO } from '../../models/Billing.models';
-import { ConfigurationService } from '../../services/configuration.service';
+import { StatusClassPipe } from 'app/pipes/status-class.pipe';
+import { FirstLetterUppercasePipe } from 'app/pipes/first-letter-uppercase.pipe';
+import { CardDetailsComponent } from 'app/components/card-details/card-details.component';
+import { Repairs, RepairsDetails } from 'app/models/repair.model';
+import { BillingService } from 'app/services/billing.service';
+import { SharedService } from 'app/services/shared.service';
+import { ERROR_CLASS, SUCCES_CLASS } from 'app/utils/constanst';
+import { BillingsDTO } from 'app/models/Billing.models';
+import { ConfigurationService } from 'app/services/configuration.service';
 
 @Component({
   selector: 'app-repir-details',

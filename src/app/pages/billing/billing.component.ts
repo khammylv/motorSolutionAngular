@@ -2,15 +2,15 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
-import { BillingTabComponent } from '../../components/billing-tab/billing-tab.component';
+import { BillingTabComponent } from 'app/components/billing-tab/billing-tab.component';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { InformationComponent } from '../../components/information/information.component';
-import { PaginatorTableComponent } from '../../components/paginator-table/paginator-table.component';
-import { ClientsService } from '../../services/clients.service';
-import { ConfigurationService } from '../../services/configuration.service';
+import { InformationComponent } from 'app/components/information/information.component';
+import { PaginatorTableComponent } from 'app/components/paginator-table/paginator-table.component';
+import { ClientsService } from 'app/services/clients.service';
+import { ConfigurationService } from 'app/services/configuration.service';
 import { catchError, of, Subscription, tap } from 'rxjs';
-import { Pagination } from '../../models/Pagination.model';
-import { Clients } from '../../models/clients.model';
+import { Pagination } from 'app/models/Pagination.model';
+import { Clients } from 'app/models/clients.model';
 
 @Component({
   selector: 'app-billing',

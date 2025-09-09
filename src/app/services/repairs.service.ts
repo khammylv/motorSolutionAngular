@@ -8,9 +8,9 @@ import {
   RepairsDTO,
   RepairStatus,
   Status
-} from '../models/repair.model';
-import { Roles } from '../models/User.model';
-import { EmailSend } from '../models/Email.model';
+} from 'app/models/repair.model';
+import { Roles } from 'app/models/User.model';
+import { EmailSend } from 'app/models/Email.model';
 import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root',

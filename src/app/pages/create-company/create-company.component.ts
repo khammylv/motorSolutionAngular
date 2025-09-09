@@ -1,15 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { InputPasswordComponent } from '../../components/input-password/input-password.component';
-import { InputEmailComponent } from '../../components/input-email/input-email.component';
-import { InputTextComponent } from '../../components/input-text/input-text.component';
-import { SharedService } from '../../services/shared.service';
+import { InputPasswordComponent } from 'app/components/input-password/input-password.component';
+import { SharedService } from 'app/services/shared.service';
 import { Router } from '@angular/router';
-import { Company } from '../../models/Company.model';
-import { CompanyService } from '../../services/company.service';
+import { CompanyService } from 'app/services/company.service';
 import { catchError, of, Subscription, tap } from 'rxjs';
-import { SnackbarService } from '../../services/snackbar.service';
+import { SnackbarService } from 'app/services/snackbar.service';
 
 @Component({
   selector: 'app-create-company',

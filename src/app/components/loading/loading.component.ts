@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { LoadingService } from '../../services/loading.service';
+
+import { LoadingService } from 'app/services/loading.service';
 
 @Component({
   selector: 'app-loading',
