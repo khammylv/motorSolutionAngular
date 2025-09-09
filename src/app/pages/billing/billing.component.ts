@@ -10,7 +10,7 @@ import { ClientsService } from 'app/services/clients.service';
 import { ConfigurationService } from 'app/services/configuration.service';
 import { catchError, of, Subscription, tap } from 'rxjs';
 import { Pagination } from 'app/models/Pagination.model';
-import { Clients } from 'app/models/clients.model';
+import { Clients } from 'app/models/Client.model';
 
 @Component({
   selector: 'app-billing',

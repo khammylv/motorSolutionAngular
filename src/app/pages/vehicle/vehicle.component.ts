@@ -16,7 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 
 import { ClientsService } from 'app/services/clients.service';
-import { Clients } from 'app/models/clients.model';
+import { Clients } from 'app/models/Client.model';
 import { MatExpansionModule} from '@angular/material/expansion';
 
 @Component({

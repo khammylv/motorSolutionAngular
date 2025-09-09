@@ -14,7 +14,7 @@ import { EmailSend } from 'app/models/Email.model';
 import { LoadingService } from 'app/services/loading.service';
 import { InputEmailComponent } from 'app/components/input-email/input-email.component';
 import { ClientsService } from 'app/services/clients.service';
-import { Clients } from 'app/models/clients.model';
+import { Clients } from 'app/models/Client.model';
 
 @Component({
   selector: 'app-form-email',

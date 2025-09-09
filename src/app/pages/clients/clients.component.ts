@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TblItem } from 'app/models/TblItem.model';
 import { ERROR_CLASS, SUCCES_CLASS, TBL_CLIENT } from 'app/utils/constanst';
-import { Clients } from 'app/models/clients.model';
+import { Clients } from 'app/models/Client.model';
 import { catchError, of, Subscription, tap } from 'rxjs';
 import { Pagination } from 'app/models/Pagination.model';
 import { ClientsService } from 'app/services/clients.service';
