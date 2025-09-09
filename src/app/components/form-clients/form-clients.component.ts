@@ -12,7 +12,7 @@ import { InputTextComponent } from 'app/components/input-text/input-text.compone
 import { InputEmailComponent } from 'app/components/input-email/input-email.component';
 import { NameFormPipe } from 'app/pipes/name-form.pipe';
 import { LoadingComponent } from 'app/components/loading/loading.component';
-import { Clients } from 'app/models/clients.model';
+import { Clients } from '../../models/clients.model';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ClientsService } from 'app/services/clients.service';
 import { ConfigurationService } from 'app/services/configuration.service';
